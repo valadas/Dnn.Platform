@@ -14,8 +14,7 @@
       <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
       <azureCompatible>true</azureCompatible>
       <dependencies>
-        <dependency type="CoreVersion">09.01.00</dependency>
-        <dependency type="package" version="09.01.00">DotNetNuke.Web.Deprecated</dependency>
+        <dependency type="CoreVersion">10.00.00</dependency>
       </dependencies>
       <components>
         <component type="Module">
@@ -33,7 +32,7 @@
                 <moduleControls>
                   <moduleControl>
                     <controlKey />
-                    <controlSrc>DesktopModules/DigitalAssets/View.ascx</controlSrc>
+                    <controlSrc>DesktopModules/DigitalAssets/View.html</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle />
                     <controlType>View</controlType>
@@ -43,7 +42,7 @@
                   </moduleControl>                  
                   <moduleControl>
                     <controlKey>Settings</controlKey>
-                    <controlSrc>DesktopModules/DigitalAssets/Settings.ascx</controlSrc>
+                    <controlSrc>DesktopModules/DigitalAssets/Settings.html</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle>Digital Asset Management Settings</controlTitle>
                     <controlType>Edit</controlType>
@@ -53,7 +52,7 @@
                   </moduleControl>
                     <moduleControl>
                         <controlKey>FolderProperties</controlKey>
-                        <controlSrc>DesktopModules/DigitalAssets/FolderProperties.ascx</controlSrc>
+                        <controlSrc>DesktopModules/DigitalAssets/FolderProperties.html</controlSrc>
                         <supportsPartialRendering>False</supportsPartialRendering>
                         <controlTitle>Folder Info</controlTitle>
                         <controlType>View</controlType>
@@ -64,7 +63,7 @@
                     </moduleControl>
                     <moduleControl>
                         <controlKey>FileProperties</controlKey>
-                        <controlSrc>DesktopModules/DigitalAssets/FileProperties.ascx</controlSrc>
+                        <controlSrc>DesktopModules/DigitalAssets/FileProperties.html</controlSrc>
                         <supportsPartialRendering>False</supportsPartialRendering>
                         <controlTitle>File Info</controlTitle>
                         <controlType>View</controlType>
@@ -75,7 +74,7 @@
                     </moduleControl>
                     <moduleControl>
                         <controlKey>FolderMappings</controlKey>
-                        <controlSrc>DesktopModules/DigitalAssets/FolderMappings.ascx</controlSrc>
+                        <controlSrc>DesktopModules/DigitalAssets/FolderMappings.html</controlSrc>
                         <supportsPartialRendering>False</supportsPartialRendering>
                         <controlTitle>Folder Mappings</controlTitle>
                         <controlType>Edit</controlType>
@@ -86,7 +85,7 @@
                     </moduleControl>
                     <moduleControl>
                         <controlKey>EditFolderMapping</controlKey>
-                        <controlSrc>DesktopModules/DigitalAssets/EditFolderMapping.ascx</controlSrc>
+                        <controlSrc>DesktopModules/DigitalAssets/EditFolderMapping.html</controlSrc>
                         <supportsPartialRendering>True</supportsPartialRendering>
                         <controlTitle>Edit Folder Mapping</controlTitle>
                         <controlType>Edit</controlType>
@@ -116,36 +115,7 @@
                       <name>DotNetNuke.Modules.DigitalAssets.dll</name>
                   </assembly>
               </assemblies>
-          </component>
-          <component type="File">
-              <files>
-                  <basePath>DesktopModules/DigitalAssets</basePath>
-                  <file>
-                      <name>View.ascx</name>
-                      <sourceFileName>View.ascx</sourceFileName>
-                  </file>
-                  <file>
-                      <name>Settings.ascx</name>
-                      <sourceFileName>Settings.ascx</sourceFileName>
-                  </file>
-                  <file>
-                      <name>FolderProperties.ascx</name>
-                      <sourceFileName>FolderProperties.ascx</sourceFileName>
-                  </file>
-                  <file>
-                      <name>FileProperties.ascx</name>
-                      <sourceFileName>FileProperties.ascx</sourceFileName>
-                  </file>
-                  <file>
-                      <name>FolderMappings.ascx</name>
-                      <sourceFileName>FolderMappings.ascx</sourceFileName>
-                  </file>
-                  <file>
-                      <name>EditFolderMapping.ascx</name>
-                      <sourceFileName>EditFolderMapping.ascx</sourceFileName>
-                  </file>
-          </files>
-          </component>
+          </component>          
           <component type="ResourceFile">
               <resourceFiles>
                   <basePath>DesktopModules/DigitalAssets</basePath>
@@ -154,7 +124,6 @@
                   </resourceFile>
               </resourceFiles>
           </component>
-
       </components>
     </package>
   </packages>
