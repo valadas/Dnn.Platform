@@ -26,6 +26,10 @@
       <ReleaseNotesFiles Include="releaseNotes.txt"/>
     </ItemGroup>
     <Copy SourceFiles="@(ReleaseNotesFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
+    <ItemGroup>
+      <CleanupFiles Include="Cleanup/*.txt" />      
+    </ItemGroup>
+    <Copy SourceFiles="@(CleanupFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
     <CreateItem Include="$(PackageFiles)">
       <Output TaskParameter="Include" ItemName="OutputContent" />
     </CreateItem>

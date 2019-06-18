@@ -1,30 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  
-  <Target Name="SetVariables">
-    <PropertyGroup>
-      <WebsitePath>$(MSBuildProjectDirectory)\..\..\..\Website</WebsitePath>
-      <DesktopModulesPath>$(WebsitePath)\DesktopModules\DigitalAssets</DesktopModulesPath>
-    </PropertyGroup>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\DNN_Platform.build" />
+  <PropertyGroup>
+    <Extension>zip</Extension>
+    <DNNFileName>dnn_DigitalAssets</DNNFileName>
+    <PackageName>DNNCE_DigitalAssetsManagement</PackageName>
+    <ModuleFolderName>$(WebsitePath)\DesktopModules\DigitalAssets</ModuleFolderName>
+  </PropertyGroup>
+  <Import Project="$(BuildScriptsPath)\Package.Targets" />
+  <Import Project="$(BuildScriptsPath)\Module.Build"/>
+  <Target Name="UpdateFiles">
     <ItemGroup>
-      <DesktopModulesFiles Include="*.html" />
-      <ImageFiles Include="images/*.jpg;images/*.jpeg;images/*.gif;images/*.png;images/*.svg" />
-      <ResourceFiles Include="App_LocalResources/*.resx" />
-      <BinFiles Include="$(MSBuildProjectDirectory)\bin\$(AssemblyName).*" />
+      <Resources Remove="web.config" />
     </ItemGroup>
-  </Target>
-  
-  <!-- The Deploy target runs in debug mode to deploy files to the website automatically for quick debugging -->
-  <!-- You can set a symbolic link to an actual running site root to deploy directly to your development site -->
-  <Target Name="DeployModule" Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'" DependsOnTargets="SetVariables">
-	  <Copy SourceFiles="@(DesktopModulesFiles)" DestinationFolder="$(DesktopModulesPath)" SkipUnchangedFiles="true" />
-    <Copy SourceFiles="@(ImageFiles)" DestinationFolder="$(DesktopModulesPath)\images" SkipUnchangedFiles="true" />
-    <Copy SourceFiles="@(ResourceFiles)" DestinationFolder="$(DesktopModulesPath)\App_LocalResources" SkipUnchangedFiles="true" />
-    <Copy SourceFiles="@(BinFiles)" DestinationFolder="$(WebsitePath)\bin" />
-  </Target>
-
-  <!-- The Package target runs in release mode to creating the install package zip file -->
-  <Target Name="PackageModule" Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <Message Importance="high" Text="!!!!!!!!!!!! RELEASE !!!!!!!!!!!!"></Message>
   </Target>
 </Project>
