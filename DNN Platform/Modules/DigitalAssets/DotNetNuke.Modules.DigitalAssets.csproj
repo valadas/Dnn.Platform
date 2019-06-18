@@ -210,9 +210,16 @@
     <Content Include="View.html" />
     <Content Include="web.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="App_LocalResources\View.resx" />
+    <Content Include="App_LocalResources\EditFolderMapping.ascx.resx" />
+    <Content Include="App_LocalResources\FileFieldsControl.ascx.resx" />
+    <Content Include="App_LocalResources\FileProperties.ascx.resx" />
+    <Content Include="App_LocalResources\FolderMappings.ascx.resx" />
+    <Content Include="App_LocalResources\FolderProperties.ascx.resx" />
+    <Content Include="App_LocalResources\SearchBoxControl.ascx.resx" />
+    <Content Include="App_LocalResources\Settings.ascx.resx" />
+    <Content Include="App_LocalResources\SharedResources.resx" />
+    <Content Include="App_LocalResources\View.ascx.resx" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
