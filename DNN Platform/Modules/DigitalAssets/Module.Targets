@@ -10,7 +10,6 @@
   <Import Project="$(BuildScriptsPath)\Package.Targets" />
   <Import Project="$(BuildScriptsPath)\Module.Build"/>
   <Target Name="BeforeBuild" DependsOnTargets="RunYarn">
-    <Message Importance="high" Text="We are in before build" />
   </Target>
   <Target Name="RunYarn" Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <Yarn Command="install" WorkingDirectory="$(MSBuildProjectDirectory)\DigitalAssets.Web\" IgnoreExitCode="false" NodeJSExecutablePath="$(MSBuildProjectDirectory)\..\..\..\Packages\Nodejs.Redist.x64.11.14.0\tools" />
