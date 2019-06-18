@@ -80,6 +80,7 @@
                   </resourceFile>
               </resourceFiles>
           </component>
+        <component type="Cleanup" version="10.00.00" fileName ="10.00.00.txt" />
       </components>
     </package>
   </packages>

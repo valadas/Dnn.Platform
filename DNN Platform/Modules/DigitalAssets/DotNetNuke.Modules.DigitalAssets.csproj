@@ -200,13 +200,13 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Cleanup\10.00.00.txt" />
     <None Include="Module.Targets" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Settings.html" />
     <Content Include="View.html" />
     <Content Include="web.config" />
   </ItemGroup>
