@@ -175,20 +175,12 @@
     <Compile Include="Services\Factory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_LocalResources\SharedResources.resx">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Images\Files_32x32_Standard.png" />
     <Content Include="License.txt" />
     <Content Include="ReleaseNotes.txt" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="dnn_DigitalAssets.dnn">
-      <SubType>Designer</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\View.ascx.resx">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
@@ -208,32 +200,19 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_LocalResources\FolderMappings.ascx.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\EditFolderMapping.ascx.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\FileProperties.ascx.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\FileFieldsControl.ascx.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\Settings.ascx.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_LocalResources\FolderProperties.ascx.resx" />
-    <Content Include="App_LocalResources\SearchBoxControl.ascx.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Module.build" />
+    <None Include="Module.Targets" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Settings.html" />
+    <Content Include="View.html" />
     <Content Include="web.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="App_LocalResources\View.resx" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
@@ -257,12 +236,14 @@
   </ProjectExtensions>
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
-  <Import Project="Module.build" />
+  <Import Project="Module.Targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Target Name="AfterBuild" DependsOnTargets="DeployModule;PackageModule">
   </Target>
 </Project>
