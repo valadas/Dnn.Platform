@@ -251,3 +251,6 @@ Website/Portals/_default/Install/Dnn.CKToolbarButtons.xml
 Website/Portals/_default/Install/Dnn.CKToolbarSets.xml
 Website/DesktopModules/Admin/SiteExportImport/App_LocalResources/ExportImport.resx
 /TestResult.xml
+/DNN Platform/Modules/DigitalAssets/DigitalAssets.Web/node_modules
+/DNN Platform/Modules/DigitalAssets/View.js
+/DNN Platform/Modules/DigitalAssets/View.js.map
