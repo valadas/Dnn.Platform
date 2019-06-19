@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", function(){
     const wrappers = document.querySelectorAll(".dnn-dam");
     const heading = document.createElement("h1");
-    heading.innerText = "Hello from javascript live";
     
-    wrappers.forEach(function(wrapper){
+    wrappers.forEach(function(wrapper: HTMLElement){
+        const moduleId = parseInt(wrapper.dataset.moduleId);
+        heading.innerText = "The module ID is: " + moduleId;
         wrapper.appendChild(heading);
     });
 });
