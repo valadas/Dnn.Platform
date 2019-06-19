@@ -9,6 +9,9 @@
     "start": "webpack-dev-server --config webpack.dev.js"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "@types/node": "^12.0.8",
+    "@types/react-dom": "^16.8.4",
     "@typescript-eslint/eslint-plugin": "^1.10.2",
     "@typescript-eslint/parser": "^1.10.2",
     "babel-eslint": "^10.0.2",
@@ -16,6 +19,9 @@
     "eslint": "^5.16.0",
     "eslint-loader": "^2.1.2",
     "eslint-plugin-react": "^7.13.0",
+    "jest": "^24.8.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "style-loader": "^0.23.1",
     "ts-loader": "^6.0.3",
     "typescript": "^3.5.2",
@@ -23,5 +29,6 @@
     "webpack-cli": "^3.3.4",
     "webpack-dev-server": "^3.7.2",
     "webpack-merge": "^4.2.1"
-  }
+  },
+  "dependencies": {}
 }
