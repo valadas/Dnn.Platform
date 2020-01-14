@@ -191,6 +191,7 @@
     <Content Include="App_LocalResources\SharedResources.resx">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="ClientScripts\dnn.DigitalAssets.FilterViewSettings.js" />
     <Content Include="License.txt" />
     <Content Include="module.css" />
     <Content Include="ReleaseNotes.txt" />
