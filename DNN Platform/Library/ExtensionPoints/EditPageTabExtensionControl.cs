@@ -11,10 +11,12 @@ using System.Web.UI.WebControls;
 
 namespace DotNetNuke.ExtensionPoints
 {
+    [Obsolete("Deprecated in 9.5.0. Scheduled removal in v11.0.0")]
     [DefaultProperty("Module")]
     [ToolboxData("<{0}:EditPageTabExtensionControl runat=server></{0}:EditPageTabExtensionControl>")]
     public class EditPageTabExtensionControl : DefaultExtensionControl
     {
+        [Obsolete("Deprecated in 9.5.0. Scheduled removal in v11.0.0")]
         [Bindable(true)]
         [DefaultValue("")]
         public string TabControlId
@@ -30,6 +32,7 @@ namespace DotNetNuke.ExtensionPoints
             }
         }
 
+        [Obsolete("Deprecated in 9.5.0. Scheduled removal in v11.0.0")]
         [Bindable(true)]
         [DefaultValue("")]
         public string PanelControlId
@@ -44,7 +47,8 @@ namespace DotNetNuke.ExtensionPoints
                 ViewState["PanelControlId"] = value;
             }
         }
-        
+
+        [Obsolete("Deprecated in 9.5.0. Scheduled removal in v11.0.0")]
         protected override void OnInit(EventArgs e)
         {
             var extensionPointManager = new ExtensionPointManager();
@@ -72,6 +76,7 @@ namespace DotNetNuke.ExtensionPoints
             }
         }
 
+        [Obsolete("Deprecated in 9.5.0. Scheduled removal in v11.0.0")]
         public void BindAction(int portalId, int tabId, int moduleId)
         {
             var panel = Parent.FindControl(PanelControlId);
@@ -93,6 +98,7 @@ namespace DotNetNuke.ExtensionPoints
             }
         }
 
+        [Obsolete("Deprecated in 9.5.0. Scheduled removal in v11.0.0")]
         public void SaveAction(int portalId, int tabId, int moduleId)
         {
             var panel = Parent.FindControl(PanelControlId);
