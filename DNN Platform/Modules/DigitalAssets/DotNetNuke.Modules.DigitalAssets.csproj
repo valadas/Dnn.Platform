@@ -23,6 +23,7 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -109,15 +110,11 @@
       <HintPath>..\..\..\Packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
-    <Reference Include="Telerik.Web.UI">
-      <HintPath>..\..\Components\Telerik\bin\Telerik.Web.UI.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\..\SolutionInfo.cs">
       <Link>SolutionInfo.cs</Link>
     </Compile>
-    <Compile Include="ClientDialog.cs" />
     <Compile Include="Components\Controllers\DigitalAssetsSettingsRepository.cs" />
     <Compile Include="Components\Controllers\IDigitalAssetsControllerData.cs" />
     <Compile Include="Components\Controllers\Models\ExtractedItemViewModel.cs" />
@@ -144,34 +141,6 @@
     <Compile Include="Components\ExtensionPoint\UserControls\FileFieldsControlExtensionPoint.cs" />
     <Compile Include="Components\ExtensionPoint\UserControls\PreviewInfoPanelExtensionPoint.cs" />
     <Compile Include="Components\ExtensionPoint\UserControls\SearchBoxExtensionPoint.cs" />
-    <Compile Include="FileFieldsControl.ascx.cs">
-      <DependentUpon>FileFieldsControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FileFieldsControl.ascx.designer.cs">
-      <DependentUpon>FileFieldsControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="FolderProperties.ascx.cs">
-      <DependentUpon>FolderProperties.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FolderProperties.ascx.designer.cs">
-      <DependentUpon>FolderProperties.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="PreviewFieldsControl.ascx.cs">
-      <DependentUpon>PreviewFieldsControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PreviewFieldsControl.ascx.designer.cs">
-      <DependentUpon>PreviewFieldsControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="PreviewPanelControl.ascx.cs">
-      <DependentUpon>PreviewPanelControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PreviewPanelControl.ascx.designer.cs">
-      <DependentUpon>PreviewPanelControl.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Components\ExtensionPoint\ToolBarButton\ListViewToolBarButtonExtensionPoint.cs" />
     <Compile Include="Components\ExtensionPoint\ToolBarButton\GridViewToolBarButtonExtensionPoint.cs" />
     <Compile Include="Components\ExtensionPoint\ToolBarButton\ViewPropertiesSelectionToolBarButtonExtensionPoint.cs" />
@@ -189,35 +158,7 @@
     <Compile Include="Components\ExtensionPoint\ToolBarButton\UploadFilesToolbarButtonExtensionPoint.cs" />
     <Compile Include="Components\ExtensionPoint\ToolBarButton\CreateFolderToolBarButtonExtensionPoint.cs" />
     <Compile Include="Components\Controllers\Models\Field.cs" />
-    <Compile Include="EditFolderMapping.ascx.cs">
-      <DependentUpon>EditFolderMapping.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="EditFolderMapping.ascx.designer.cs">
-      <DependentUpon>EditFolderMapping.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="FileProperties.ascx.cs">
-      <DependentUpon>FileProperties.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FileProperties.ascx.designer.cs">
-      <DependentUpon>FileProperties.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="FolderMappings.ascx.cs">
-      <DependentUpon>FolderMappings.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FolderMappings.ascx.designer.cs">
-      <DependentUpon>FolderMappings.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchBoxControl.ascx.cs">
-      <DependentUpon>SearchBoxControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SearchBoxControl.ascx.designer.cs">
-      <DependentUpon>SearchBoxControl.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Services\ContentServiceController.cs" />
     <Compile Include="Services\DamExceptionFilterAttribute.cs" />
     <Compile Include="Services\DownloadServiceController.cs" />
@@ -245,46 +186,15 @@
     <Compile Include="Settings.ascx.designer.cs">
       <DependentUpon>Settings.ascx</DependentUpon>
     </Compile>
-    <Compile Include="View.ascx.cs">
-      <DependentUpon>View.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View.ascx.designer.cs">
-      <DependentUpon>View.ascx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_LocalResources\SharedResources.resx">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="ClientScripts\ModuleEditor.js" />
-    <Content Include="ClientScripts\dnn.DigitalAssets.js" />
-    <Content Include="ClientScripts\dnn.DigitalAssets.SearchBox.js" />
-    <Content Include="ClientScripts\dnn.DigitalAssetsController.js" />
-    <Content Include="ClientScripts\dnn.DigitalAssets.FilterViewSettings.js" />
-    <Content Include="FileFieldsControl.ascx" />
-    <Content Include="FolderProperties.ascx" />
-    <Content Include="Images\down.png" />
-    <Content Include="Images\indeterminate.gif" />
-    <Content Include="Images\manageFolderTypes.png" />
-    <Content Include="Images\transparencyBG.jpg" />
-    <Content Include="PreviewFieldsControl.ascx" />
-    <Content Include="PreviewPanelControl.ascx" />
-    <Content Include="EditFolderMapping.ascx" />
-    <Content Include="FileProperties.ascx" />
-    <Content Include="FolderMappings.ascx" />
-    <Content Include="Images\cancel.png" />
-    <Content Include="Images\checkmark.png" />
-    <Content Include="Images\dropZone.png" />
-    <Content Include="Images\Files_32x32_Standard.png" />
-    <Content Include="Images\Search.png" />
-    <Content Include="Images\tree.png" />
     <Content Include="License.txt" />
     <Content Include="module.css" />
     <Content Include="ReleaseNotes.txt" />
-    <Content Include="SearchBoxControl.ascx" />
     <Content Include="Settings.ascx" />
-    <Content Include="View.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="dnn_DigitalAssets.dnn">
@@ -300,11 +210,6 @@
     <ProjectReference Include="..\..\DotNetNuke.Abstractions\DotNetNuke.Abstractions.csproj">
       <Project>{6928A9B1-F88A-4581-A132-D3EB38669BB0}</Project>
       <Name>DotNetNuke.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\DotNetNuke.Web.Deprecated\DotNetNuke.Web.Deprecated.csproj">
-      <Project>{9ba59b3d-9ffb-4a9e-bd7d-8b58d08b3a33}</Project>
-      <Name>DotNetNuke.Web.Deprecated</Name>
-      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\..\DotNetNuke.Web\DotNetNuke.Web.csproj">
       <Project>{ee1329fe-fd88-4e1a-968c-345e394ef080}</Project>
@@ -346,6 +251,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="View.html" />
     <Content Include="web.config" />
   </ItemGroup>
   <ProjectExtensions>

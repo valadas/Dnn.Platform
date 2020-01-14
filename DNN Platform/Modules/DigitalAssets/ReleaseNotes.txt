@@ -8,7 +8,7 @@
 <div class="License">
 	<h3>About the DigitalAssets</h3>
 	<p class="Owner">
-		<b>Version 09.01.00</b><br /><br />
+		<b>Version 09.05.00</b><br /><br />
 	</p>
-	<p>This version is dependent now on the DotNetNuke.Web.Deprecated installable library.</p>
+	<p>Complete rebuild as a SPA module.</p>
 </div>

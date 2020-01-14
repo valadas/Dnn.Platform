@@ -2,15 +2,16 @@
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // 
+using System;
 using System.ComponentModel;
 using System.Text;
 using System.Web;
 using System.Web.UI;
-
 using DotNetNuke.ExtensionPoints.Filters;
 
 namespace DotNetNuke.ExtensionPoints
 {
+    [Obsolete("Deprecated in 9.5.0. Scheduled removal in v11.0.0")]
     [DefaultProperty("Text")]
     [ToolboxData("<{0}:ToolBarButtonExtensionControl runat=server></{0}:ToolBarButtonExtensionControl>")]
     public class ToolBarButtonExtensionControl : DefaultExtensionControl
@@ -21,6 +22,7 @@ namespace DotNetNuke.ExtensionPoints
         [DefaultValue(false)]
         public bool IsHost { get; set; }
 
+        [Obsolete("Deprecated in 9.5.0. Scheduled removal in v11.0.0")]
         protected override void RenderContents(HtmlTextWriter output)
         {
             var extensionPointManager = new ExtensionPointManager();
@@ -49,6 +51,7 @@ namespace DotNetNuke.ExtensionPoints
             output.Write(str.ToString());
         }
 
+        [Obsolete("Deprecated in 9.5.0. Scheduled removal in v11.0.0")]
         protected override void Render(HtmlTextWriter writer)
         {
             RenderContents(writer);
