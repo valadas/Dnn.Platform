@@ -119,6 +119,9 @@
                 var boostrapScript = document.createElement('script');
                 boostrapScript.setAttribute('src', 'scripts/bootstrap.js' + version);
                 body.appendChild(boostrapScript);
+                var cssVars = window.parent.document.head.querySelector('#dnn-css-variables');
+                var clone = cssVars.cloneNode(true);
+                document.head.appendChild(clone);
             }
         })();
     </script>
