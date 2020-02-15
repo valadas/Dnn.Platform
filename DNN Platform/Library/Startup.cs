@@ -9,6 +9,7 @@ using DotNetNuke.Entities.Portals;
 using DotNetNuke.UI.Modules;
 using DotNetNuke.UI.Modules.Html5;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace DotNetNuke
 {
@@ -21,6 +22,13 @@ namespace DotNetNuke
             services.AddSingleton<ReflectedModuleControlFactory>();
             services.AddTransient(x => PortalController.Instance);
             services.AddTransient<INavigationManager, NavigationManager>();
+
+            this.ConfigureEntityServices(services);
+        }
+
+        private void ConfigureEntityServices(IServiceCollection services)
+        {
+            services.AddSingleton<IPortalStylesController, PortalStylesController>();
         }
     }
 }

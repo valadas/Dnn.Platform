@@ -11,11 +11,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DotNetNuke.Framework {
-    
-    
-    public partial class DefaultPage {
-        
+namespace DotNetNuke.Framework
+{
+
+
+    public partial class DefaultPage
+    {
+
         /// <summary>
         /// skinDocType control.
         /// </summary>
@@ -24,7 +26,7 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal skinDocType;
-        
+
         /// <summary>
         /// attributeList control.
         /// </summary>
@@ -33,7 +35,7 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal attributeList;
-        
+
         /// <summary>
         /// Head control.
         /// </summary>
@@ -42,7 +44,7 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlHead Head;
-        
+
         /// <summary>
         /// metaPanel control.
         /// </summary>
@@ -51,7 +53,7 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder metaPanel;
-        
+
         /// <summary>
         /// MetaRefresh control.
         /// </summary>
@@ -60,7 +62,7 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlMeta MetaRefresh;
-        
+
         /// <summary>
         /// MetaDescription control.
         /// </summary>
@@ -68,8 +70,8 @@ namespace DotNetNuke.Framework {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected new global::System.Web.UI.HtmlControls.HtmlMeta MetaDescription;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlMeta MetaDescription;
+
         /// <summary>
         /// MetaKeywords control.
         /// </summary>
@@ -77,8 +79,8 @@ namespace DotNetNuke.Framework {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected new global::System.Web.UI.HtmlControls.HtmlMeta MetaKeywords;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlMeta MetaKeywords;
+
         /// <summary>
         /// MetaCopyright control.
         /// </summary>
@@ -87,7 +89,7 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlMeta MetaCopyright;
-        
+
         /// <summary>
         /// MetaGenerator control.
         /// </summary>
@@ -96,7 +98,7 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlMeta MetaGenerator;
-        
+
         /// <summary>
         /// MetaAuthor control.
         /// </summary>
@@ -105,7 +107,7 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlMeta MetaAuthor;
-        
+
         /// <summary>
         /// MetaRobots control.
         /// </summary>
@@ -114,7 +116,16 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlMeta MetaRobots;
-        
+
+        /// <summary>
+        /// CssCustomProperties control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal CssCustomProperties;
+
         /// <summary>
         /// ClientDependencyHeadCss control.
         /// </summary>
@@ -123,7 +134,7 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder ClientDependencyHeadCss;
-        
+
         /// <summary>
         /// ClientDependencyHeadJs control.
         /// </summary>
@@ -132,7 +143,7 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder ClientDependencyHeadJs;
-        
+
         /// <summary>
         /// CSS control.
         /// </summary>
@@ -141,7 +152,7 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder CSS;
-        
+
         /// <summary>
         /// SCRIPTS control.
         /// </summary>
@@ -150,7 +161,7 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder SCRIPTS;
-        
+
         /// <summary>
         /// Body control.
         /// </summary>
@@ -159,7 +170,7 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Body;
-        
+
         /// <summary>
         /// Form control.
         /// </summary>
@@ -167,8 +178,8 @@ namespace DotNetNuke.Framework {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected new global::DotNetNuke.Common.Controls.Form Form;
-        
+        protected global::DotNetNuke.Common.Controls.Form Form;
+
         /// <summary>
         /// BodySCRIPTS control.
         /// </summary>
@@ -177,7 +188,7 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder BodySCRIPTS;
-        
+
         /// <summary>
         /// SkinError control.
         /// </summary>
@@ -186,7 +197,7 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label SkinError;
-        
+
         /// <summary>
         /// SkinPlaceHolder control.
         /// </summary>
@@ -195,7 +206,7 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder SkinPlaceHolder;
-        
+
         /// <summary>
         /// ScrollTop control.
         /// </summary>
@@ -204,7 +215,7 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden ScrollTop;
-        
+
         /// <summary>
         /// __dnnVariable control.
         /// </summary>
@@ -213,7 +224,7 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden @__dnnVariable;
-        
+
         /// <summary>
         /// ClientResourcesFormBottom control.
         /// </summary>
@@ -222,7 +233,7 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder ClientResourcesFormBottom;
-        
+
         /// <summary>
         /// ClientResourceIncludes control.
         /// </summary>
@@ -231,7 +242,7 @@ namespace DotNetNuke.Framework {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder ClientResourceIncludes;
-        
+
         /// <summary>
         /// ClientResourceLoader control.
         /// </summary>
