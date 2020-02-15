@@ -173,90 +173,221 @@ namespace DotNetNuke.Entities.Portals
         #endregion
 
         #region Auto-Properties
-
+        /// <summary>
+        /// Gets or sets the ID of the active tab (page)
+        /// </summary>
         public TabInfo ActiveTab { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ID of the user that is the portal primary administrator (owner).
+        /// </summary>
 		public int AdministratorId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ID of the role that represents administrators for this portal.
+        /// </summary>
 		public int AdministratorRoleId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the role that represents administrators for this portal.
+        /// </summary>
 		public string AdministratorRoleName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ID of the tab (page) that contains the administration modules.
+        /// </summary>
 		public int AdminTabId { get; set; }
 
+        /// <summary>
+        /// Gets or sets a file that can optionnaly be used as a background image if the theme supports it.
+        /// </summary>
 		public string BackgroundFile { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value that can be used by the Vendors/Banner module, there is no built-in UI to manage this setting.
+        /// </summary>
 		public int BannerAdvertising { get; set; }
 
+        /// <summary>
+        /// Gets or sets the culture code in a format that represents the language and contry as in "fr-CA" for French Canada.
+        /// </summary>
 		public string CultureCode { get; set; }
 
+        /// <summary>
+        /// Gets or sets the currency used for this portal, in the platform this is used for Paypal subscriptions.
+        /// </summary>
 		public string Currency { get; set; }
 
+        /// <summary>
+        /// Gets or sets the culture code of the default language for this portal.
+        /// </summary>
 		public string DefaultLanguage { get; set; }
 
+        /// <summary>
+        /// Gets or sets the portal description, used for SEO purposes and RSS feeds.
+        /// </summary>
 		public string Description { get; set; }
 
+        /// <summary>
+        /// Gets or sets the portal owner email address.
+        /// </summary>
 		public string Email { get; set; }
 
+        /// <summary>
+        /// Gets or sets when the portal will expire (stop loading).
+        /// </summary>
         public DateTime ExpiryDate { get; set; }
 
+        /// <summary>
+        /// Gets or sets a configurable text that can be injected by the theme, usually used for copyright notice and consumed by the copyright skinObject.
+        /// [year] in this text will get replaced by the current year when used with the skinObject.
+        /// </summary>
 		public string FooterText { get; set; }
 
+        /// <summary>
+        /// Gets or sets a <see cref="Guid"/> to uniquely identify this portal, can be used for such things as encryption and licensing.
+        /// </summary>
 		public Guid GUID { get; set; }
 
+        /// <summary>
+        /// Gets or sets the public facing portal nome directory (url).
+        /// </summary>
 		public string HomeDirectory { get; set; }
 
+        /// <summary>
+        /// Gets or sets the public facing portal (url) path to the special system directory for that portal.
+        /// </summary>
 		public string HomeSystemDirectory { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tab (page) ID of the home page of this portal.
+        /// </summary>
 		public int HomeTabId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the hosting fee for this portal if hosting fees are enabled.
+        /// </summary>
 		public float HostFee { get; set; }
 
+        /// <summary>
+        /// Gets or sets the hosting space allowed if hosting fees are enabled.
+        /// </summary>
 		public int HostSpace { get; set; }
 
+        /// <summary>
+        /// Gets or sets the portal keywords, used for SEO purposes and the Dnn search indexer.
+        /// </summary>
 		public string KeyWords { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tab (page) ID of the login page.
+        /// </summary>
 		public int LoginTabId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the logo for the portal.
+        /// </summary>
 		public string LogoFile { get; set; }
 
+        /// <summary>
+        /// Gets or sets the number of allowed pages if hosting fees are enabled.
+        /// </summary>
 		public int PageQuota { get; set; }
 
+        /// <summary>
+        /// Gets or sets the number of pages (tabs) this portal contains.
+        /// </summary>
 		public int Pages { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ID of the portal.
+        /// </summary>
 		public int PortalId { get; set; }
 
+        /// <summary>
+        /// Gets or sets portal alias currently used by the request.
+        /// </summary>
 		public PortalAliasInfo PortalAlias { get; set; }
 
+        /// <summary>
+        /// Gets or sets the portal primary alias.
+        /// </summary>
 		public PortalAliasInfo PrimaryAlias { get; set; }
 
+        /// <summary>
+        /// Gets or sets the portal name, used for SEO, menus, mesages, logs, etc.
+        /// </summary>
 		public string PortalName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the role id for users that are registered on this portal.
+        /// </summary>
 		public int RegisteredRoleId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the role that represents registered users on this portal.
+        /// </summary>
 		public string RegisteredRoleName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tab (page) id where users can go to register.
+        /// </summary>
 		public int RegisterTabId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the registration settings, <see cref="RegistrationSettings"/>.
+        /// </summary>
         public RegistrationSettings Registration { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tab (page) id where the search results are located.
+        /// </summary>
         public int SearchTabId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the id or the tab (page) that is used as a splash page.
+        /// </summary>
         public int SplashTabId { get; set; }
 
+        /// <summary>
+        /// Gets or sets that tab (page) ID that contains superuser (host) modules.
+        /// </summary>
 		public int SuperTabId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the maximum number of users allowed if hosting fees are enabled.
+        /// </summary>
 		public int UserQuota { get; set; }
 
+        /// <summary>
+        /// Gets or setsthe type of user registration in use, <see cref="Globals.PortalRegistrationType"/>.
+        /// </summary>
 		public int UserRegistration { get; set; }
 
+        /// <summary>
+        /// Get or sets the number of users this portal contains.
+        /// </summary>
 		public int Users { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tab (page) ID where the user profile is located.
+        /// </summary>
 		public int UserTabId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tab (page) ID that contains the portal terms and conditions.
+        /// </summary>
         public int TermsTabId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tab (page) ID that contains the portal privacy policy.
+        /// </summary>
 		public int PrivacyTabId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the portal styles, these get injected as css custom properties on each page head, <see cref="PortalStyles"/>.
+        /// </summary>
+        public PortalStyles Styles { get; set; }
         
         #endregion
 
@@ -475,11 +606,23 @@ namespace DotNetNuke.Entities.Portals
             }
         }
 
+        [Obsolete("Deprecated in Platform 9.4.2. Scheduled removal in v11.0.0. Use CurrentPortalSettings instead.")]
         public static PortalSettings Current
         {
             get
             {
                 return PortalController.Instance.GetCurrentPortalSettings();
+            }
+        }
+
+        /// <summary>
+        /// Gets the current portal settings.
+        /// </summary>
+        public static IPortalSettings CurrentSettings
+        {
+            get
+            {
+                return PortalController.Instance.GetCurrentSettings();
             }
         }
 

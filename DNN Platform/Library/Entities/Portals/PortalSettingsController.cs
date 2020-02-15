@@ -36,11 +36,14 @@ using DotNetNuke.Services.Localization;
 using DotNetNuke.UI.Skins;
 using DotNetNuke.Entities.Controllers;
 using DotNetNuke.Web.Client;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DotNetNuke.Entities.Portals
 {
     public class PortalSettingsController : IPortalSettingsController
     {
+        protected readonly IPortalStylesController PortalStylesController;
+
         public static IPortalSettingsController Instance()
         {
             var controller = ComponentFactory.GetComponent<IPortalSettingsController>("PortalSettingsController");
@@ -50,6 +53,14 @@ namespace DotNetNuke.Entities.Portals
             }
 
             return ComponentFactory.GetComponent<IPortalSettingsController>("PortalSettingsController");
+        }
+
+        /// <summary>
+        /// Instantiates a new instance of the <see cref="PortalSettingsController"/> class.
+        /// </summary>
+        public PortalSettingsController()
+        {
+            this.PortalStylesController = Globals.DependencyProvider.GetRequiredService<IPortalStylesController>();
         }
 
         public virtual void ConfigureActiveTab(PortalSettings portalSettings)
@@ -324,6 +335,7 @@ namespace DotNetNuke.Entities.Portals
             setting = settings.GetValueOrDefault("DataConsentDelayMeasurement", "d");
             portalSettings.DataConsentDelayMeasurement = setting;
 
+            portalSettings.Styles = PortalStylesController.GetPortalStyles(portalSettings.PortalId);
         }
 
         protected virtual void UpdateSkinSettings(TabInfo activeTab, PortalSettings portalSettings)

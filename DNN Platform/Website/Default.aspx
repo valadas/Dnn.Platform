@@ -12,7 +12,8 @@
     <meta id="MetaCopyright" runat="Server" name="COPYRIGHT" Visible="False"/>
     <meta id="MetaGenerator" runat="Server" name="GENERATOR" Visible="False"/>
     <meta id="MetaAuthor" runat="Server" name="AUTHOR" Visible="False"/>
-    <meta id="MetaRobots" runat="server" name="ROBOTS" Visible="False" />    
+    <meta id="MetaRobots" runat="server" name="ROBOTS" Visible="False" />
+    <asp:Literal runat="server" ID="CssCustomProperties" />
     <asp:PlaceHolder runat="server" ID="ClientDependencyHeadCss"></asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="ClientDependencyHeadJs"></asp:PlaceHolder>
     <asp:placeholder id="CSS" runat="server" />
