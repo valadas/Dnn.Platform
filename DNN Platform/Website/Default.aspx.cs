@@ -828,7 +828,7 @@ namespace DotNetNuke.Framework
             var portalStyles = PortalSettings.Styles;
             var sb = new StringBuilder();
             sb
-                .AppendLine(@"<style type=""text/css"">")
+                .AppendLine(@"<style type=""text/css"" id=""dnn-css-variables"">")
                 .AppendLine(@":root {")
 
                 .AppendLine($"--dnn-color-primary: #{portalStyles.PrimaryColor.MinifiedHex};")
