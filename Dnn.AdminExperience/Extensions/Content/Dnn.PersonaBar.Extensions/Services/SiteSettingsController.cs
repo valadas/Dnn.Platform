@@ -3137,6 +3137,41 @@ namespace Dnn.PersonaBar.SiteSettings.Services
 
         #endregion
 
+        #region Styles Settings API
+
+        [HttpGet]
+        [DnnAuthorize(StaticRoles = Constants.AdminsRoleName)]
+        public HttpResponseMessage GetStylesSettings(int? portalId)
+        {
+            try
+            {
+                var pid = portalId ?? PortalId;
+                if (!UserInfo.IsSuperUser && pid != PortalId)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.Unauthorized,
+                        "Authorization has been denied for this request");
+                }
+
+                var portal = PortalController.Instance.GetPortal(pid);
+                var portalSettings = new PortalSettings(portal);
+
+                var settings = new
+                {
+                    PortalSettings.Styles
+                };
+
+                return Request.CreateResponse(HttpStatusCode.OK, new { Settings = settings });
+            }
+            catch (Exception exc)
+            {
+                var message = "An error occured while trying to obtain the portal styles settings.";
+                Logger.Error(message, exc);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, message);
+            }
+        }
+
+        #endregion
+
         #region Other Settings API
 
         /// GET: api/SiteSettings/GetOtherSettings

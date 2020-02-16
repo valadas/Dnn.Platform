@@ -35,5 +35,5 @@ using System.Reflection;
 [assembly: AssemblyCopyright("DotNetNuke is copyright 2002-2018 by DNN Corporation. All Rights Reserved.")]
 [assembly: AssemblyTrademark("DNN")]
 [assembly: AssemblyVersion("10.0.0")]
-[assembly: AssemblyFileVersion("10.0.0.5858")]
-[assembly: AssemblyInformationalVersion("10.0.0-unstable.5858+Branch.new-styles.Sha.bd48d712ca0d3db042f68df2e71ba61b7ff63c27")]
+[assembly: AssemblyFileVersion("10.0.0.5859")]
+[assembly: AssemblyInformationalVersion("10.0.0-unstable.5859+Branch.new-styles.Sha.8b358a46fff6bd7dbfffd60c0e6e3b5535823693")]
