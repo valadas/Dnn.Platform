@@ -6,7 +6,7 @@ import siteBehavior from "./siteBehaviorReducer";
 import languages from "./languagesReducer";
 import search from "./searchReducer";
 import languageEditor from "./languageEditorReducer";
-import styles from "./styles";
+import styles from "./stylesReducer";
 
 function getExtraReducers() {
     let extraReducers = {};
