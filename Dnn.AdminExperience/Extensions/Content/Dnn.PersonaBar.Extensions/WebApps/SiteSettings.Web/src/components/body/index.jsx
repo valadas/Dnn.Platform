@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import {
-    pagination as PaginationActions
-} from "../../actions";
+import { pagination as PaginationActions } from "../../actions";
 import { DnnTabs, PersonaBarPageBody } from "@dnnsoftware/dnn-react-common";
 import BasicSettings from "../basicSettings";
 import DefaultPagesSettings from "../defaultPagesSettings";
@@ -102,6 +100,20 @@ export class Body extends Component {
         </DnnTabs>;
     }
 
+    getStylesSecondaryTabs() {
+        let stylesTabHeaders = [resx.get("PrimaryColor"), resx.get("SecondaryColor"), resx.get("TertiaryColor"), resx.get("Controls")];
+        let stylesTabContent = [
+            <p key="primary-color">Primary</p>,
+            <p key="secondary-color">Secondary</p>,
+            <p key="tertiary-color">Tertiary</p>,
+            <p key="controls">Controls</p>
+        ];
+
+        return <DnnTabs onSelect={ this.handleSelect.bind(this) } tabHeaders={stylesTabHeaders} type="secondary">
+            {stylesTabContent}
+        </DnnTabs>;
+    }
+
     renderBasicSettings() {
         return (<BasicSettings portalId={this.props.portalId} cultureCode={this.props.cultureCode} />);
     }
@@ -115,6 +127,7 @@ export class Body extends Component {
             tabHeaders.push(resx.get("TabSiteBehavior"));
             tabHeaders.push(resx.get("TabLanguage"));
             tabHeaders.push(resx.get("TabSearch"));
+            tabHeaders.push(resx.get("TabStyles"));
         }
 
         return (
@@ -135,6 +148,7 @@ export class Body extends Component {
                         cultureCode={this.props.cultureCode}/>
                     }
                     {this.props.showing && isAdmin && this.getSearchSecondaryTabs() }
+                    {this.props.showing && isAdmin && this.getStylesSecondaryTabs() }
                 </DnnTabs>
             </PersonaBarPageBody>
         );
