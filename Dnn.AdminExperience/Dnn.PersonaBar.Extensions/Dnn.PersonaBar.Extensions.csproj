@@ -409,6 +409,7 @@
     <Compile Include="Services\Dto\SiteSettings\UpdateProfileSettingsRequest.cs" />
     <Compile Include="Services\Dto\SiteSettings\UpdateSiteAliasRequest.cs" />
     <Compile Include="Services\Dto\SiteSettings\UpdateSiteSettingsRequest.cs" />
+    <Compile Include="Services\Dto\SiteSettings\UpdateStylesRequest.cs" />
     <Compile Include="Services\Dto\SiteSettings\UpdateSynonymsGroupRequest.cs" />
     <Compile Include="Services\Dto\SiteSettings\UpdateTransaltionsRequest.cs" />
     <Compile Include="Services\Dto\SiteSettings\UpdateUrlMappingSettingsRequest.cs" />

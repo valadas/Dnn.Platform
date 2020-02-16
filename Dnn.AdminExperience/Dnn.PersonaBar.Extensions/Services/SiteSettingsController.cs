@@ -45,6 +45,7 @@ using System.Web;
 using System.Web.Http;
 using FileInfo = System.IO.FileInfo;
 using Constants = Dnn.PersonaBar.Library.Constants;
+using Dnn.PersonaBar.Extensions.Services.Dto.SiteSettings;
 
 namespace Dnn.PersonaBar.SiteSettings.Services
 {
@@ -72,9 +73,12 @@ namespace Dnn.PersonaBar.SiteSettings.Services
         private const double DefaultMessagingThrottlingInterval = 0.5; // set default MessagingThrottlingInterval value to 30 seconds.
 
         protected INavigationManager NavigationManager { get; }
-        public SiteSettingsController(INavigationManager navigationManager)
+        protected IPortalStylesController PortalStylesController { get; }
+
+        public SiteSettingsController(INavigationManager navigationManager, IPortalStylesController portalStylesController)
         {
             NavigationManager = navigationManager;
+            PortalStylesController = portalStylesController;
         }
 
         #region Site Info API
@@ -3133,12 +3137,9 @@ namespace Dnn.PersonaBar.SiteSettings.Services
                         "Authorization has been denied for this request");
                 }
 
-                var portal = PortalController.Instance.GetPortal(pid);
-                var portalSettings = new PortalSettings(portal);
-
                 var settings = new
                 {
-                    PortalSettings.Styles
+                    Styles = PortalStylesController.GetPortalStyles(pid)
                 };
 
                 return Request.CreateResponse(HttpStatusCode.OK, new { Settings = settings });
@@ -3147,6 +3148,30 @@ namespace Dnn.PersonaBar.SiteSettings.Services
             {
                 var message = "An error occured while trying to obtain the portal styles settings.";
                 Logger.Error(message, exc);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, message);
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [DnnAuthorize(StaticRoles = Constants.AdminsRoleName)]
+        public HttpResponseMessage UpdateStylesSettings(UpdateStylesRequest request)
+        {
+            try
+            {
+                var pid = request.PortalId ?? PortalId;
+                if (!UserInfo.IsSuperUser && pid != PortalId)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, AuthFailureMessage);
+                }
+
+                PortalStylesController.UpdatePortalStyles(pid, request.Styles);
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                var message = "An error occured while trying to update the portal styles.";
+                Logger.Error(message, ex);
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, message);
             }
         }

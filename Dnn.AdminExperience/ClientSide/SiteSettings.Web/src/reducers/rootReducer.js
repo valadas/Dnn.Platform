@@ -6,6 +6,7 @@ import siteBehavior from "./siteBehaviorReducer";
 import languages from "./languagesReducer";
 import search from "./searchReducer";
 import languageEditor from "./languageEditorReducer";
+import styles from "./styles";
 
 function getExtraReducers() {
     let extraReducers = {};
@@ -29,7 +30,8 @@ const rootReducer = combineReducers(Object.assign(getExtraReducers(), {
     siteBehavior,
     languages,
     search,
-    languageEditor
+    languageEditor,
+    styles
 }));
 
 export default rootReducer;

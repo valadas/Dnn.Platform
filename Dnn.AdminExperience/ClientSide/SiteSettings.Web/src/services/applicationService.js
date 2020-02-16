@@ -327,6 +327,16 @@ class ApplicationService {
         const sf = this.getServiceFramework("SiteSettings");
         sf.post("UpdateListEntryOrders", payload, callback, failureCallback);
     }
+
+    getStylesSettings(portalId, callback) {
+        const sf = this.getServiceFramework("SiteSettings");
+        sf.get("GetStylesSettings?portalId=" + portalId, {}, callback);
+    }
+
+    updateStylesSettings(payload, callback, failureCallback) {
+        const sf = this.getServiceFramework("SiteSettings");
+        sf.post("UpdateStylesSettings", payload, callback, failureCallback);
+    }
 }
 const applicationService = new ApplicationService();
 export default applicationService;
