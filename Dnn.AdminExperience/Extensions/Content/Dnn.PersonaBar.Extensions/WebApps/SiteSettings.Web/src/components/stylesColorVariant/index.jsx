@@ -14,7 +14,6 @@ class StylesColorVariant extends Component {
     }
 
     componentDidMount() {
-        this.normalPanel.current.expanded = false;
         this.normalChevron.current.addEventListener("changed", e => {
             this.normalPanel.current.expanded = e.detail;
         });
@@ -79,7 +78,7 @@ class StylesColorVariant extends Component {
                     </div>
                 </div>
                 <dnn-collapsible ref={this.normalPanel}>
-                    <dnn-color-picker ref={this.picker} color={this.state.color} style={{margin: "0 auto"}} />
+                    <dnn-color-picker ref={this.picker} color={this.state.color} expanded={false} style={{margin: "0 auto"}} />
                 </dnn-collapsible>
             </div>
         );
