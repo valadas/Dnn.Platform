@@ -85,7 +85,11 @@ namespace DotNetNuke.Entities.Portals
         /// <returns>"000000" or "FFFFFF"</returns>
         public string GetContrastColor(StyleColorBase color)
         {
-            string result = (color.Red / 255 * 0.299 + color.Green / 255 * 0.587 + color.Blue / 255 * 0.114) > 186 ? "000000" : "FFFFFF";
+            var r = color.Red * 0.299d;
+            var g = color.Green * 0.587d;
+            var b = color.Blue * 0.114d;
+            var total = r + g + b;
+            string result = total > 186 ? "000000" : "FFFFFF";
             return result;
         }
     }
