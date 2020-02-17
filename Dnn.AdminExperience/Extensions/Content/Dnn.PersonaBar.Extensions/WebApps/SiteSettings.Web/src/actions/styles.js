@@ -14,9 +14,9 @@ const stylesActions = {
         return (dispatch) => {
             ApplicationService.getStylesSettings(portalId, data => {
                 dispatch({
-                    type: ActionTypes.RETRIEVED_STYLES,
+                    type: ActionTypes.RETRIEDVED_STYLES_SETTINGS,
                     data: {
-                        styles: data.Styles,
+                        styles: data.Settings.Styles,
                         clientModified: false
                     }
                 });

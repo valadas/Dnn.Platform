@@ -14,6 +14,7 @@ import LanguageSettings from "../languageSettings";
 import SynonymsGroups from "../synonymsGroups";
 import IgnoreWords from "../ignoreWords";
 import MoreSettings from "../moreSettings";
+import StylesColor from "../stylesColor";
 import "./style.less";
 import util from "../../utils";
 import resx from "../../resources";
@@ -103,7 +104,7 @@ export class Body extends Component {
     getStylesSecondaryTabs() {
         let stylesTabHeaders = [resx.get("PrimaryColor"), resx.get("SecondaryColor"), resx.get("TertiaryColor"), resx.get("Controls")];
         let stylesTabContent = [
-            <p key="primary-color">Primary</p>,
+            <StylesColor key="primary-color" colorClass="primary" />,
             <p key="secondary-color">Secondary</p>,
             <p key="tertiary-color">Tertiary</p>,
             <p key="controls">Controls</p>

@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import application from "./globals/application";
 import configureStore from "./store/configureStore";
 import App from "./containers/Root";
+import { applyPolyfills, defineCustomElements } from "@eraware/dnn-elements/loader";
 
 let store = configureStore();
 
@@ -18,3 +19,7 @@ render(
     </Provider>,
     appContainer
 );
+
+applyPolyfills().then(() => {
+    defineCustomElements(window);
+});
