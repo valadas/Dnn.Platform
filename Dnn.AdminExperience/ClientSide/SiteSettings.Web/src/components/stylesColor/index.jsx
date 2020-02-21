@@ -172,7 +172,26 @@ class StylesColor extends Component {
                                     TertiaryColorContrast: {...this.state.styles.TertiaryColorContrast,
                                         HexValue: e}}})}
                         />
-
+                        <div style={{
+                            borderStyle: "solid",
+                            borderWidth: 1,
+                            borderRadius: "var(--dnn-controls-radius)",
+                            margin: 10,
+                            padding: 10,
+                            display: "flex",
+                            alignItems: "center"
+                        }}>
+                            <label for="dnnControlsRadius" style={{marginRight: 10}}>{resx.get("ControlsRadius")} : </label>
+                            <input type="range" id="dnnControlsRadius"
+                                min={0} max={30} step={1}
+                                value={this.state.styles.ControlsRadius}
+                                onChange={e => {
+                                    this.setState({...this.state, styles: { ...this.state.styles, ControlsRadius: e.target.value }});
+                                    document.documentElement.style.setProperty("--dnn-controls-radius", `${this.state.styles.ControlsRadius}px`);
+                                }}
+                            ></input>
+                            {this.state.styles.ControlsRadius}
+                        </div>
                     </div>
                 }
             </div>
