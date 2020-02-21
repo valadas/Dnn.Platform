@@ -1109,10 +1109,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.2.tgz#63985d3d8b02530e0869962f4da09142ee8e200e"
   integrity sha512-n/VQ4mbfr81aqkx/XmVicOLjviMuy02eenSdJY33SVA7S2J42EU0P1H0mOogfYedb3wXA0d/LVtBrgTSm04WEA==
 
-"@eraware/dnn-elements@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@eraware/dnn-elements/-/dnn-elements-0.7.0.tgz#a62095f4518744a23f49c8e8257b5b2dc18a1fd8"
-  integrity sha512-jZcgvpzXd6NFQfpYFbbJ/AugRqOUlOLrfVX0nwA+QPD/m6Z0j20joAtRK3ghdzVpDrSe14XWue0aXAK/sccRGw==
+"@eraware/dnn-elements@^0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@eraware/dnn-elements/-/dnn-elements-0.7.1.tgz#b946d7fc00e5de1751918439430f78a6758a0143"
+  integrity sha512-lcbS+NhQheeJKZ+9vgG7WZ7C0FsMiZ2cM1CviU+eRize/VpUPjJs101PhnbHaGKiOE3d7jJXadBBmwQyUJp1eQ==
 
 "@evocateur/libnpmaccess@^3.1.2":
   version "3.1.2"

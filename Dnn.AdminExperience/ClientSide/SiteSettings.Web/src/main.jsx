@@ -21,5 +21,5 @@ render(
 );
 
 applyPolyfills().then(() => {
-    defineCustomElements(window);
+    defineCustomElements(window, {resourcesUrl: "Modules/Dnn.SiteSettings/script/bundles"});
 });

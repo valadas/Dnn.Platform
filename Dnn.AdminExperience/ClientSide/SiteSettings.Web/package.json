@@ -15,7 +15,7 @@
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-react": "^7.0.0",
     "@dnnsoftware/dnn-react-common": "9.4.4",
-    "@eraware/dnn-elements": "^0.7.0",
+    "@eraware/dnn-elements": "^0.7.1",
     "array.prototype.find": "2.0.4",
     "array.prototype.findindex": "2.0.2",
     "babel-loader": "^8.0.6",

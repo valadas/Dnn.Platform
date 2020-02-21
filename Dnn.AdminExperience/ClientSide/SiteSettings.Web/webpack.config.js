@@ -6,20 +6,20 @@ const webpackExternals = require("@dnnsoftware/dnn-react-common/WebpackExternals
 const settings = require("../../../settings.local.json");
 
 module.exports = {
-  entry: "./src/main.jsx",
-  optimization: {
-    minimize: isProduction
-  },
-  output: {
-    path:
+    entry: "./src/main.jsx",
+    optimization: {
+        minimize: isProduction
+    },
+    output: {
+        path:
       isProduction || settings.WebsitePath == ""
         ? path.resolve(
             __dirname,
             "../../Dnn.PersonaBar.Extensions/admin/personaBar/Dnn.SiteSettings/scripts/bundles/"
           )
-        : settings.WebsitePath +
+          : settings.WebsitePath +
           "\\DesktopModules\\Admin\\Dnn.PersonaBar\\Modules\\Dnn.SiteSettings\\scripts\\bundles\\",
-    publicPath: isProduction ? "" : "http://localhost:8085/dist/",
+        publicPath: isProduction ? "Modules/Dnn.SiteSettings/scripts/bundles/" : "http://localhost:8085/dist/",
     filename: "site-settings-bundle.js"
   },
   devServer: {
