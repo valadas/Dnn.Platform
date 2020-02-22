@@ -41,6 +41,25 @@ class StylesColor extends Component {
         }));
     }
 
+    saveData() {
+        this.props.dispatch(stylesActions.updatePortalStyles({ 
+            PortalId: this.state.portalId,
+            PrimaryColor: this.state.styles.PrimaryColor.HexValue,
+            PrimaryColorContrast: this.state.styles.PrimaryColorContrast.HexValue,
+            PrimaryColorDark: this.state.styles.PrimaryColorDark.HexValue,
+            PrimaryColorLight: this.state.styles.PrimaryColorLight.HexValue,
+            SecondaryColor: this.state.styles.SecondaryColor.HexValue,
+            SecondaryColorContrast: this.state.styles.SecondaryColorContrast.HexValue,
+            SecondaryColorDark: this.state.styles.SecondaryColorDark.HexValue,
+            SecondaryColorLight: this.state.styles.SecondaryColorLight.HexValue,
+            TertiaryColor: this.state.styles.TertiaryColor.HexValue,
+            TertiaryColorContrast: this.state.styles.TertiaryColorContrast.HexValue,
+            TertiaryColorDark: this.state.styles.TertiaryColorLight.HexValue,
+            TertiaryColorLight: this.state.styles.TertiaryColorLight.HexValue,
+            ControlsRadius: this.state.styles.ControlsRadius
+        }));
+    }
+
     render() {
         return (
             <div className="styles-color">
@@ -191,6 +210,10 @@ class StylesColor extends Component {
                                 }}
                             ></input>
                             {this.state.styles.ControlsRadius}
+                        </div>
+                        <div style={{ display: "flex", justifyContent: "center"}}>
+                            <dnn-button type="secondary" style={{ margin: 10 }} onClick={() => window.location.reload()}>{resx.get("Cancel")}</dnn-button>
+                            <dnn-button size="large" style={{ margin: 10 }} onClick={() => this.saveData()}>{resx.get("Save")}</dnn-button>
                         </div>
                     </div>
                 }
