@@ -12,9 +12,18 @@ namespace Dnn.PersonaBar.Extensions.Services.Dto.SiteSettings
         /// </summary>
         public int? PortalId { get; set; }
 
-        /// <summary>
-        /// Gets or sets the portal styles.
-        /// </summary>
-        public PortalStyles Styles { get; set; }
+        public string PrimaryColor { get; set; }
+        public string PrimaryColorLight { get; set; }
+        public string PrimaryColorDark { get; set; }
+        public string PrimaryColorContrast { get; set; }
+        public string SecondaryColor { get; set; }
+        public string SecondaryColorLight { get; set; }
+        public string SecondaryColorDark { get; set; }
+        public string SecondaryColorContrast { get; set; }
+        public string TertiaryColor { get; set; }
+        public string TertiaryColorLight { get; set; }
+        public string TertiaryColorDark { get; set; }
+        public string TertiaryColorContrast { get; set; }
+        public int ControlsRadius { get; set; }
     }
 }

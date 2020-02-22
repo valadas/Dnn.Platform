@@ -54,7 +54,9 @@ namespace DotNetNuke.Entities.Portals
         public string HexValue
         {
             get { return _hex; }
-            set { if (IsValidCssColor(value))
+            set
+            { 
+                if (IsValidCssColor(value))
                 {
                     this._hex = ExpandColor(value);
                 } 

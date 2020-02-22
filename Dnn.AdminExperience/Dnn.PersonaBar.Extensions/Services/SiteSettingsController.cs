@@ -3165,7 +3165,22 @@ namespace Dnn.PersonaBar.SiteSettings.Services
                     return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, AuthFailureMessage);
                 }
 
-                PortalStylesController.UpdatePortalStyles(pid, request.Styles);
+                var newStyles = PortalSettings.Styles;
+                newStyles.PrimaryColor.HexValue = request.PrimaryColor;
+                newStyles.PrimaryColorContrast.HexValue = request.PrimaryColorContrast;
+                newStyles.PrimaryColorDark.HexValue = request.PrimaryColorDark;
+                newStyles.PrimaryColorLight.HexValue = request.PrimaryColorLight;
+                newStyles.SecondaryColor.HexValue = request.SecondaryColor;
+                newStyles.SecondaryColorContrast.HexValue = request.SecondaryColorContrast;
+                newStyles.SecondaryColorDark.HexValue = request.SecondaryColorDark;
+                newStyles.SecondaryColorLight.HexValue = request.SecondaryColorLight;
+                newStyles.TertiaryColor.HexValue = request.TertiaryColor;
+                newStyles.TertiaryColorContrast.HexValue = request.TertiaryColorContrast;
+                newStyles.TertiaryColorDark.HexValue = request.TertiaryColorDark;
+                newStyles.TertiaryColorLight.HexValue = request.TertiaryColorLight;
+                newStyles.ControlsRadius = request.ControlsRadius;
+
+                PortalStylesController.UpdatePortalStyles(pid, newStyles);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
