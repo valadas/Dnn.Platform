@@ -59,18 +59,18 @@ namespace DotNetNuke.Entities.Portals
         /// <param name="portalStyles">The <see cref="PortalStyles"/></param>
         public void UpdatePortalStyles(int portalId, PortalStyles portalStyles)
         {
-            PortalController.Instance.UpdatePortalSetting(portalId, PRIMARY_COLOR, portalStyles.PrimaryColor.HexValue, false, null, false);
-            PortalController.Instance.UpdatePortalSetting(portalId, PRIMARY_COLOR_LIGHT, portalStyles.PrimaryColorLight.HexValue, false, null, false);
-            PortalController.Instance.UpdatePortalSetting(portalId, PRIMARY_COLOR_DARK, portalStyles.PrimaryColorDark.HexValue, false, null, false);
-            PortalController.Instance.UpdatePortalSetting(portalId, PRIMARY_COLOR_CONTRAST, portalStyles.PrimaryColorContrast.HexValue, false, null, false);
-            PortalController.Instance.UpdatePortalSetting(portalId, SECONDARY_COLOR, portalStyles.SecondaryColor.HexValue, false, null, false);
-            PortalController.Instance.UpdatePortalSetting(portalId, SECONDARY_COLOR_LIGHT, portalStyles.SecondaryColorLight.HexValue, false, null, false);
-            PortalController.Instance.UpdatePortalSetting(portalId, SECONDARY_COLOR_DARK, portalStyles.SecondaryColorDark.HexValue, false, null, false);
-            PortalController.Instance.UpdatePortalSetting(portalId, SECONDARY_COLOR_CONTRAST, portalStyles.SecondaryColorContrast.HexValue, false, null, false);
-            PortalController.Instance.UpdatePortalSetting(portalId, TERTIARY_COLOR, portalStyles.TertiaryColor.HexValue, false, null, false);
-            PortalController.Instance.UpdatePortalSetting(portalId, TERTIARY_COLOR_LIGHT, portalStyles.TertiaryColorLight.HexValue, false, null, false);
-            PortalController.Instance.UpdatePortalSetting(portalId, TERTIARY_COLOR_DARK, portalStyles.TertiaryColorDark.HexValue, false, null, false);
-            PortalController.Instance.UpdatePortalSetting(portalId, TERTIARY_COLOR_CONTRAST, portalStyles.TertiaryColorContrast.HexValue, false, null, false);
+            PortalController.Instance.UpdatePortalSetting(portalId, PRIMARY_COLOR, portalStyles.PrimaryColor.HexValue, true, null, false);
+            PortalController.Instance.UpdatePortalSetting(portalId, PRIMARY_COLOR_LIGHT, portalStyles.PrimaryColorLight.HexValue, true, null, false);
+            PortalController.Instance.UpdatePortalSetting(portalId, PRIMARY_COLOR_DARK, portalStyles.PrimaryColorDark.HexValue, true, null, false);
+            PortalController.Instance.UpdatePortalSetting(portalId, PRIMARY_COLOR_CONTRAST, portalStyles.PrimaryColorContrast.HexValue, true, null, false);
+            PortalController.Instance.UpdatePortalSetting(portalId, SECONDARY_COLOR, portalStyles.SecondaryColor.HexValue, true, null, false);
+            PortalController.Instance.UpdatePortalSetting(portalId, SECONDARY_COLOR_LIGHT, portalStyles.SecondaryColorLight.HexValue, true, null, false);
+            PortalController.Instance.UpdatePortalSetting(portalId, SECONDARY_COLOR_DARK, portalStyles.SecondaryColorDark.HexValue, true, null, false);
+            PortalController.Instance.UpdatePortalSetting(portalId, SECONDARY_COLOR_CONTRAST, portalStyles.SecondaryColorContrast.HexValue, true, null, false);
+            PortalController.Instance.UpdatePortalSetting(portalId, TERTIARY_COLOR, portalStyles.TertiaryColor.HexValue, true, null, false);
+            PortalController.Instance.UpdatePortalSetting(portalId, TERTIARY_COLOR_LIGHT, portalStyles.TertiaryColorLight.HexValue, true, null, false);
+            PortalController.Instance.UpdatePortalSetting(portalId, TERTIARY_COLOR_DARK, portalStyles.TertiaryColorDark.HexValue, true, null, false);
+            PortalController.Instance.UpdatePortalSetting(portalId, TERTIARY_COLOR_CONTRAST, portalStyles.TertiaryColorContrast.HexValue, true, null, false);
             PortalController.Instance.UpdatePortalSetting(portalId, CONTROLS_RADIUS, portalStyles.ControlsRadius.ToString(), true, null, false);
         }
 
