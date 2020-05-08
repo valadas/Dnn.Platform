@@ -808,7 +808,7 @@ Thank you,
         file upload capabilities for content, modules, and themes. These features require custom security settings so
         that the application is able to create and remove files in your website.&lt;/p&gt;
     &lt;p&gt;On your webserver, browse to the root folder of the website using Windows Explorer.
-        Right-click the folder and select &quot;Sharing and Security&quot; from the popup menu. Select tab &quot;Security&quot;. Add the
+        Right-click the folder and select &quot;Properties&quot; from the popup menu. Select tab &quot;Security&quot;. Add the
         appropriate user account and set proper permissions for the ASP.Net user, specified in advanced setting of the
         IIS application pool that is hosting your website.&lt;/p&gt;
     &lt;ul style=&quot;text-align: left; list-style-type: none; list-style-position: outside;&quot;&gt;
