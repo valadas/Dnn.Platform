@@ -775,7 +775,7 @@ Thank you,
                 &lt;li&gt;The aspnet_isapi.dll engine processes the request in an ordered series of events beginning with Application_BeginRequest.&lt;/li&gt;
             &lt;/ul&gt;
         &lt;/li&gt;
-        &lt;li&gt;&lt;strong&gt;HttpModule.URLRewrite OnBeginRequest (UrlRewriteModule.vb)&lt;/strong&gt;&lt;br /&gt;
+        &lt;li&gt;&lt;strong&gt;HttpModule.URLRewrite OnBeginRequest (UrlRewriteModule.cs)&lt;/strong&gt;&lt;br /&gt;
             &lt;ul style="list-style-type: disc;"&gt;
                 &lt;li&gt;The request URL is parsed based on the "/" character&lt;/li&gt;
                 &lt;li&gt;A domain name is constructed using each of the relevant parsed URL segments.&lt;br /&gt;
