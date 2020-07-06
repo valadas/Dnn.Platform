@@ -4,12 +4,14 @@
 namespace DotNetNuke.UI.Skins.Controls
 {
     using System;
+    using System.Linq;
     using System.Web.UI.WebControls;
-
+    using System.Xml.Linq;
     using DotNetNuke.Abstractions;
     using DotNetNuke.Common;
     using DotNetNuke.Common.Utilities;
     using DotNetNuke.Entities.Host;
+    using DotNetNuke.Services.Cache;
     using DotNetNuke.Services.Exceptions;
     using DotNetNuke.Services.FileSystem;
     using Microsoft.Extensions.DependencyInjection;
@@ -22,15 +24,20 @@ namespace DotNetNuke.UI.Skins.Controls
     public partial class Logo : SkinObjectBase
     {
         private readonly INavigationManager _navigationManager;
+        private readonly string _cacheKey;
+
 
         public Logo()
         {
             this._navigationManager = Globals.DependencyProvider.GetRequiredService<INavigationManager>();
+            this._cacheKey = string.Format(DataCache.PortalCacheKey, this.PortalSettings.PortalId, this.PortalSettings.CultureCode) + "LogoSvg";
         }
 
         public string BorderWidth { get; set; }
 
         public string CssClass { get; set; }
+
+        public Nullable<bool> isSVG { get; set; }
 
         protected override void OnLoad(EventArgs e)
         {
@@ -58,6 +65,39 @@ namespace DotNetNuke.UI.Skins.Controls
                         {
                             this.imgLogo.ImageUrl = imageUrl;
                             logoVisible = true;
+                        }
+
+                        if (this.isSVG.GetValueOrDefault() == true)
+                        {
+                            logoVisible = false; // hide the <img>, we are going to inject an <svg> tag instead.
+
+                            hypLogo.CssClass = this.CssClass; // put the custom CSS class on the hyperlink instead
+
+                            string svg = string.Empty;
+                            string cacheSvg = (string)CachingProvider.Instance().GetItem(this._cacheKey);
+
+                            if (string.IsNullOrEmpty(cacheSvg))
+                            {
+
+                                XDocument svgXmlDoc = XDocument.Load(fileInfo.PhysicalPath);
+                                XElement svgXmlNode = svgXmlDoc.Descendants().Where(x => x.Name.LocalName == "svg").SingleOrDefault();
+
+                                if (svgXmlNode != null)
+                                {
+                                    svg = svgXmlNode.ToString();
+
+                                    CachingProvider.Instance().Insert(this._cacheKey, svg);
+                                }
+                            }
+                            else
+                            {
+                                svg = cacheSvg;
+                            }
+
+                            Literal litSvg = new Literal();
+                            litSvg.Text = svg;
+
+                            this.hypLogo.Controls.Add(litSvg);
                         }
                     }
                 }
