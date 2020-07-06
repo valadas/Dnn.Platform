@@ -43,55 +43,42 @@ namespace DotNetNuke.UI.Skins.Controls
             base.OnLoad(e);
             try
             {
-                if (!string.IsNullOrEmpty(this.BorderWidth))
-                {
-                    this.imgLogo.BorderWidth = Unit.Parse(this.BorderWidth);
-                }
-
-                if (!string.IsNullOrEmpty(this.CssClass))
-                {
-                    this.imgLogo.CssClass = this.CssClass;
-                }
-
-                bool logoVisible = false;
                 if (!string.IsNullOrEmpty(this.PortalSettings.LogoFile))
                 {
                     var fileInfo = this.GetLogoFileInfo();
                     if (fileInfo != null)
                     {
-                        string imageUrl = FileManager.Instance.GetUrl(fileInfo);
-                        if (!string.IsNullOrEmpty(imageUrl))
+                        if (this.InjectSVG.GetValueOrDefault() == true) // try to load as <svg>
                         {
-                            this.imgLogo.ImageUrl = imageUrl;
-                            logoVisible = true;
-                        }
+                            imgLogo.Visible = false;
 
-                        if (this.InjectSVG.GetValueOrDefault() == true)
-                        {
-                            logoVisible = false; // hide the <img>, we are going to inject an <svg> tag instead.
+                            hypLogo.CssClass = this.CssClass;
 
-                            hypLogo.CssClass = this.CssClass; // put the custom CSS class on the hyperlink instead
+                            string svg = (string)CachingProvider.Instance().GetItem(this._cacheKey);
 
-                            string svg = string.Empty;
-                            string cacheSvg = (string)CachingProvider.Instance().GetItem(this._cacheKey);
-
-                            if (string.IsNullOrEmpty(cacheSvg))
+                            if (string.IsNullOrEmpty(svg))
                             {
                                 if (fileInfo.Extension == "svg")
                                 {
-                                    XDocument svgXmlDoc = XDocument.Load(fileInfo.PhysicalPath);
-                                    XElement svgXmlNode = svgXmlDoc.Descendants().Where(x => x.Name.LocalName == "svg").SingleOrDefault();
-
-                                    if (svgXmlNode != null)
+                                    try
                                     {
-                                        svg = svgXmlNode.ToString();
-                                        CachingProvider.Instance().Insert(this._cacheKey, svg);
+                                        //TODO: use the FileManager class
+
+                                        XDocument svgXmlDoc = XDocument.Load(fileInfo.PhysicalPath);
+                                        XElement svgXmlNode = svgXmlDoc.Descendants().Where(x => x.Name.LocalName == "svg").SingleOrDefault();
+
+                                        if (svgXmlNode != null)
+                                        {
+                                            svg = svgXmlNode.ToString();
+                                            CachingProvider.Instance().Insert(this._cacheKey, svg);
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        // could not load the svg, fallback to PortalName so the hyperlink has something to click
+                                        svg = PortalSettings.PortalName;
                                     }
                                 }
-                            }
-                            else
-                            {
-                                svg = cacheSvg;
                             }
 
                             Literal litSvg = new Literal();
@@ -99,18 +86,33 @@ namespace DotNetNuke.UI.Skins.Controls
 
                             this.hypLogo.Controls.Add(litSvg);
                         }
+                        else // try to load as <img>
+                        {
+                            imgLogo.Visible = true;
+
+                            string imageUrl = FileManager.Instance.GetUrl(fileInfo);
+                            if (!string.IsNullOrEmpty(imageUrl))
+                            {
+                                this.imgLogo.ImageUrl = imageUrl;
+                            }
+
+                            if (!string.IsNullOrEmpty(this.BorderWidth))
+                            {
+                                this.imgLogo.BorderWidth = Unit.Parse(this.BorderWidth);
+                            }
+
+                            if (!string.IsNullOrEmpty(this.CssClass))
+                            {
+                                this.imgLogo.CssClass = this.CssClass;
+                            }
+
+                            this.imgLogo.AlternateText = this.PortalSettings.PortalName;
+                        }
                     }
                 }
 
-                this.imgLogo.Visible = logoVisible;
-                this.imgLogo.AlternateText = this.PortalSettings.PortalName;
                 this.hypLogo.ToolTip = this.PortalSettings.PortalName;
-
-                if (!this.imgLogo.Visible)
-                {
-                    this.hypLogo.Attributes.Add("aria-label", this.PortalSettings.PortalName);
-                }
-
+                this.hypLogo.Attributes.Add("aria-label", this.PortalSettings.PortalName);
                 if (this.PortalSettings.HomeTabId != -1)
                 {
                     this.hypLogo.NavigateUrl = this._navigationManager.NavigateURL(this.PortalSettings.HomeTabId);
@@ -119,6 +121,7 @@ namespace DotNetNuke.UI.Skins.Controls
                 {
                     this.hypLogo.NavigateUrl = Globals.AddHTTP(this.PortalSettings.PortalAlias.HTTPAlias);
                 }
+
             }
             catch (Exception exc)
             {
