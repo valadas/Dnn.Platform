@@ -25,8 +25,7 @@ namespace DotNetNuke.UI.Skins.Controls
     {
         private readonly INavigationManager _navigationManager;
         private readonly string _cacheKey;
-
-
+        
         public Logo()
         {
             this._navigationManager = Globals.DependencyProvider.GetRequiredService<INavigationManager>();
@@ -78,7 +77,6 @@ namespace DotNetNuke.UI.Skins.Controls
 
                             if (string.IsNullOrEmpty(cacheSvg))
                             {
-
                                 XDocument svgXmlDoc = XDocument.Load(fileInfo.PhysicalPath);
                                 XElement svgXmlNode = svgXmlDoc.Descendants().Where(x => x.Name.LocalName == "svg").SingleOrDefault();
 
