@@ -12,7 +12,7 @@
     <Value></Value>
   </Setting>
   <Setting>
-    <Name>isSVG</Name>
+    <Name>InjectSVG</Name>
     <Type>Boolean</Type>
     <Help>
       If set to true, the control will read the contents of the Logo file, look for an <svg> tag, and inject it directly into the hyperlink</Help>
