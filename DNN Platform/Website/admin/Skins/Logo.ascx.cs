@@ -62,8 +62,6 @@ namespace DotNetNuke.UI.Skins.Controls
                                 {
                                     try
                                     {
-                                        //TODO: use the FileManager class
-
                                         XDocument svgXmlDoc = XDocument.Load(fileInfo.PhysicalPath);
                                         XElement svgXmlNode = svgXmlDoc.Descendants().Where(x => x.Name.LocalName == "svg").SingleOrDefault();
 
