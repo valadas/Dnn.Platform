@@ -70,9 +70,9 @@ namespace DotNetNuke.UI.Skins.Controls
                             // svg injection was requested and we have an svg file.
                             this.imgLogo.Visible = false;
                             string svg = DataCache.GetCache<string>(this.svgCacheKey);
-                            var svgXmlDoc = new XDocument();
                             if (string.IsNullOrEmpty(svg))
                             {
+                                var svgXmlDoc = new XDocument();
                                 using (var fileContent = FileManager.Instance.GetFileContent(fileInfo))
                                 {
                                     svgXmlDoc = XDocument.Load(fileContent);
