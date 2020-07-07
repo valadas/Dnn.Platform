@@ -51,15 +51,11 @@ namespace DotNetNuke.UI.Skins.Controls
                         if (this.InjectSVG.GetValueOrDefault() == true) // try to load as <svg>
                         {
                             imgLogo.Visible = false;
-
                             hypLogo.CssClass = this.CssClass;
 
                             string svg = (string)CachingProvider.Instance().GetItem(this._cacheKey);
-
                             if (string.IsNullOrEmpty(svg))
                             {
-                                svg = PortalSettings.PortalName; // default value in case loading the svg fails
-
                                 if (fileInfo.Extension == "svg")
                                 {
                                     try
@@ -74,14 +70,22 @@ namespace DotNetNuke.UI.Skins.Controls
                                         }
                                     }
                                     catch (Exception ex)
-                                    { }
+                                    {
+                                        this.hypLogo.Text = this.PortalSettings.PortalName;
+                                    }
+                                }
+                                else
+                                {
+                                    this.hypLogo.Text = this.PortalSettings.PortalName;
                                 }
                             }
 
-                            Literal litSvg = new Literal();
-                            litSvg.Text = svg;
-
-                            this.hypLogo.Controls.Add(litSvg);
+                            if (!string.IsNullOrEmpty(svg))
+                            {
+                                Literal litSvg = new Literal();
+                                litSvg.Text = svg;
+                                this.hypLogo.Controls.Add(litSvg);
+                            }
                         }
                         else // try to load as <img>
                         {
@@ -105,6 +109,10 @@ namespace DotNetNuke.UI.Skins.Controls
 
                             this.imgLogo.AlternateText = this.PortalSettings.PortalName;
                         }
+                    }
+                    else
+                    {
+                        this.hypLogo.Text = this.PortalSettings.PortalName;
                     }
                 }
 
