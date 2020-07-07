@@ -43,15 +43,19 @@ namespace DotNetNuke.UI.Skins.Controls
             base.OnLoad(e);
             try
             {
+                this.imgLogo.Visible = false;
+
                 if (!string.IsNullOrEmpty(this.PortalSettings.LogoFile))
                 {
+                    this.litLogo.Text = this.PortalSettings.PortalName; // default valuee is case we can't load an image or svg
+
                     var fileInfo = this.GetLogoFileInfo();
                     if (fileInfo != null)
                     {
                         if (this.InjectSVG.GetValueOrDefault() == true) // try to load as <svg>
                         {
-                            imgLogo.Visible = false;
-                            hypLogo.CssClass = this.CssClass;
+                            this.imgLogo.Visible = false;
+                            this.hypLogo.CssClass = this.CssClass;
 
                             string svg = (string)CachingProvider.Instance().GetItem(this._cacheKey);
                             if (string.IsNullOrEmpty(svg))
@@ -70,30 +74,23 @@ namespace DotNetNuke.UI.Skins.Controls
                                         }
                                     }
                                     catch (Exception ex)
-                                    {
-                                        this.hypLogo.Text = this.PortalSettings.PortalName;
-                                    }
-                                }
-                                else
-                                {
-                                    this.hypLogo.Text = this.PortalSettings.PortalName;
+                                    { }
                                 }
                             }
 
                             if (!string.IsNullOrEmpty(svg))
                             {
-                                Literal litSvg = new Literal();
-                                litSvg.Text = svg;
-                                this.hypLogo.Controls.Add(litSvg);
+                                this.litLogo.Text = svg;
                             }
                         }
                         else // try to load as <img>
                         {
-                            imgLogo.Visible = true;
+                            this.imgLogo.Visible = true;
 
                             string imageUrl = FileManager.Instance.GetUrl(fileInfo);
                             if (!string.IsNullOrEmpty(imageUrl))
                             {
+                                this.litLogo.Visible = false;
                                 this.imgLogo.ImageUrl = imageUrl;
                             }
 
@@ -109,10 +106,6 @@ namespace DotNetNuke.UI.Skins.Controls
 
                             this.imgLogo.AlternateText = this.PortalSettings.PortalName;
                         }
-                    }
-                    else
-                    {
-                        this.hypLogo.Text = this.PortalSettings.PortalName;
                     }
                 }
 
