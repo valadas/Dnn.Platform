@@ -7,6 +7,7 @@ namespace DotNetNuke.UI.Skins.Controls
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.UI.WebControls;
+    using System.Xml;
     using System.Xml.Linq;
 
     using DotNetNuke.Abstractions;
@@ -72,54 +73,61 @@ namespace DotNetNuke.UI.Skins.Controls
                             string svg = DataCache.GetCache<string>(this.svgCacheKey);
                             if (string.IsNullOrEmpty(svg))
                             {
-                                var svgXmlDoc = new XDocument();
-                                using (var fileContent = FileManager.Instance.GetFileContent(fileInfo))
+                                try
                                 {
-                                    svgXmlDoc = XDocument.Load(fileContent);
-                                }
-
-                                var svgXmlNode = svgXmlDoc.Descendants().Where(x => x.Name.LocalName == "svg").SingleOrDefault();
-
-                                if (svgXmlNode == null)
-                                {
-                                    throw new InvalidFileContentException("Invalid svg file.");
-                                }
-
-                                var ns = svgXmlNode.GetDefaultNamespace();
-
-                                if (!string.IsNullOrEmpty(this.CssClass))
-                                {
-                                    // Append the css class.
-                                    List<string> classList = new List<string>();
-                                    classList.Add(this.CssClass);
-
-                                    if (svgXmlNode.Attribute("class") != null)
+                                    var svgXmlDoc = new XDocument();
+                                    using (var fileContent = FileManager.Instance.GetFileContent(fileInfo))
                                     {
-                                        classList.AddRange(svgXmlNode.Attribute("class").Value.Split(' '));
+                                        svgXmlDoc = XDocument.Load(fileContent);
                                     }
 
-                                    svgXmlNode.SetAttributeValue("class", string.Join(" ", classList.ToArray()));
-                                }
+                                    var svgXmlNode = svgXmlDoc.Descendants().Where(x => x.Name.LocalName == "svg").SingleOrDefault();
 
-                                if (svgXmlNode.Descendants().FirstOrDefault(x => x.Name.LocalName == "title") == null)
+                                    if (svgXmlNode == null)
+                                    {
+                                        throw new InvalidFileContentException("The svg file has no svg node.");
+                                    }
+
+                                    var ns = svgXmlNode.GetDefaultNamespace();
+
+                                    if (!string.IsNullOrEmpty(this.CssClass))
+                                    {
+                                        // Append the css class.
+                                        List<string> classList = new List<string>();
+                                        classList.Add(this.CssClass);
+
+                                        if (svgXmlNode.Attribute("class") != null)
+                                        {
+                                            classList.AddRange(svgXmlNode.Attribute("class").Value.Split(' '));
+                                        }
+
+                                        svgXmlNode.SetAttributeValue("class", string.Join(" ", classList.ToArray()));
+                                    }
+
+                                    if (svgXmlNode.Descendants().FirstOrDefault(x => x.Name.LocalName == "title") == null)
+                                    {
+                                        // Add the title for ADA compliance.
+                                        var titleNode = new XElement(
+                                            ns + "title",
+                                            new XAttribute("id", this.litLogo.UniqueID),
+                                            this.PortalSettings.PortalName);
+
+                                        svgXmlNode.AddFirst(new XElement(titleNode));
+
+                                        // Link the title to the svg node.
+                                        svgXmlNode.SetAttributeValue("aria-labelledby", this.litLogo.UniqueID);
+                                    }
+
+                                    // Ensure we have the image role for ADA Compliance
+                                    svgXmlNode.SetAttributeValue("role", "img");
+
+                                    svg = svgXmlNode.ToString();
+                                    DataCache.SetCache(this.svgCacheKey, svg);
+                                }
+                                catch (XmlException ex)
                                 {
-                                    // Add the title for ADA compliance.
-                                    var titleNode = new XElement(
-                                        ns + "title",
-                                        new XAttribute("id", this.litLogo.UniqueID),
-                                        this.PortalSettings.PortalName);
-
-                                    svgXmlNode.AddFirst(new XElement(titleNode));
-
-                                    // Link the title to the svg node.
-                                    svgXmlNode.SetAttributeValue("aria-labelledby", this.litLogo.UniqueID);
+                                    throw new InvalidFileContentException("Invalid svg file: " + ex.Message);
                                 }
-
-                                // Ensure we have the image role for ADA Compliance
-                                svgXmlNode.SetAttributeValue("role", "img");
-
-                                svg = svgXmlNode.ToString();
-                                DataCache.SetCache(this.svgCacheKey, svg);
                             }
 
                             this.litLogo.Text = svg;
