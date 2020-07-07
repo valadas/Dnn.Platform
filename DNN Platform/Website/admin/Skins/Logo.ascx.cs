@@ -58,6 +58,8 @@ namespace DotNetNuke.UI.Skins.Controls
 
                             if (string.IsNullOrEmpty(svg))
                             {
+                                svg = PortalSettings.PortalName; // default value in case loading the svg fails
+
                                 if (fileInfo.Extension == "svg")
                                 {
                                     try
@@ -72,10 +74,7 @@ namespace DotNetNuke.UI.Skins.Controls
                                         }
                                     }
                                     catch (Exception ex)
-                                    {
-                                        // could not load the svg, fallback to PortalName so the hyperlink has something to click
-                                        svg = PortalSettings.PortalName;
-                                    }
+                                    { }
                                 }
                             }
 
