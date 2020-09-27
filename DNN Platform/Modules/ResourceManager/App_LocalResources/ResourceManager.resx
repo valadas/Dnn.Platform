@@ -312,4 +312,7 @@
   <data name="RemoveFolderTypeDialogHeader.Text" xml:space="preserve">
     <value>Remove Folder Type</value>
   </data>
+  <data name="FileLocation.Text" xml:space="preserve">
+    <value>File Location</value>
+  </data>
 </root>

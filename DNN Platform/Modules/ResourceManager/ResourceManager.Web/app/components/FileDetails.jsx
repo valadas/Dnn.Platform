@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import itemService from "../services/itemsService";
 import localizeService from "../services/localizeService";
+import FolderPicker from "../components/FolderSelector/FolderPicker";
 
 const FileDetails = ({file, handlers, validationErrors}) => (
     <div className="item-details" >
@@ -42,6 +43,11 @@ const FileDetails = ({file, handlers, validationErrors}) => (
             <div className="rm-field">
                 <label htmlFor="title">{localizeService.getString("Title")}</label>
                 <input id="title" onChange={handlers.changeTitle} type="text" maxLength="256" value={file.title} />
+            </div>
+            <div className="rm-field">
+                <label htmlFor="location" className="formRequired">{localizeService.getString("FileLocation")}</label>
+                {console.log(file)}
+                {console.log(handlers)}
             </div>
         </div>
         <div className="rm-clear"></div>
