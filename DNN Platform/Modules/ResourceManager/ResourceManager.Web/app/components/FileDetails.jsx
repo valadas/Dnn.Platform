@@ -37,17 +37,22 @@ const FileDetails = ({file, handlers, validationErrors}) => (
                 <label className="rm-error">{validationErrors.changeName}</label>
             </div>
             <div className="rm-field right">
-                <label htmlFor="description">{localizeService.getString("Description")}</label>
-                <textarea id="description" onChange={handlers.changeDescription} maxLength="500" value={file.description} ></textarea>
+                <label htmlFor="location" className="formRequired">{localizeService.getString("FileLocation")}</label>
+                <FolderPicker
+                    selectedFolder={{key: file.folderId, value: file.folderName}}
+                    noFolderSelectedValue={localizeService.getString("NoFolderSelected")} 
+                    searchFolderPlaceHolder={localizeService.getString("SearchFolder")}
+                    homeFolderId={file.folderId}
+                    changeFolder={e => console.log(e)}
+                />
             </div>
             <div className="rm-field">
                 <label htmlFor="title">{localizeService.getString("Title")}</label>
                 <input id="title" onChange={handlers.changeTitle} type="text" maxLength="256" value={file.title} />
             </div>
             <div className="rm-field">
-                <label htmlFor="location" className="formRequired">{localizeService.getString("FileLocation")}</label>
-                {console.log(file)}
-                {console.log(handlers)}
+                <label htmlFor="description">{localizeService.getString("Description")}</label>
+                <textarea id="description" onChange={handlers.changeDescription} maxLength="500" value={file.description} ></textarea>
             </div>
         </div>
         <div className="rm-clear"></div>
