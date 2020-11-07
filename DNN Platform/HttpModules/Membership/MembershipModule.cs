@@ -52,8 +52,6 @@ namespace DotNetNuke.HttpModules.Membership
             return false;
         }
 
-        private static string _cultureCode;
-
         /// <summary>
         /// Gets the name of the module.
         /// </summary>
