@@ -1,0 +1,19 @@
+{
+  "profiles": {
+    "Build": {
+      "commandName": "Project",
+      "commandLineArgs": "--target=Build"
+    },
+    "Package": {
+      "commandName": "Project"
+    },
+    "CreateSettings": {
+      "commandName": "Project",
+      "commandLineArgs": "--target=CreateSettings"
+    },
+    "Debug": {
+      "commandName": "Project",
+      "commandLineArgs": "--target=DebugBuild"
+    }
+  }
+}

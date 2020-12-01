@@ -515,6 +515,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNNConnect.CKEditorProvider
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dnn.GoogleTagManagerConnector", "DNN Platform\Connectors\GoogleTagManager\Dnn.GoogleTagManagerConnector.csproj", "{7B43D266-D6E1-4496-A9A1-487AFEE0D9C0}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Build", "Build\Build.csproj", "{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Cloud_Debug|Any CPU = Cloud_Debug|Any CPU
@@ -1979,6 +1981,30 @@ Global
 		{7B43D266-D6E1-4496-A9A1-487AFEE0D9C0}.Release-Net45|Any CPU.Build.0 = Release|Any CPU
 		{7B43D266-D6E1-4496-A9A1-487AFEE0D9C0}.Release-Net45|x86.ActiveCfg = Release|Any CPU
 		{7B43D266-D6E1-4496-A9A1-487AFEE0D9C0}.Release-Net45|x86.Build.0 = Release|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Cloud_Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Cloud_Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Cloud_Debug|x86.ActiveCfg = Debug|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Cloud_Debug|x86.Build.0 = Debug|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Cloud_Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Cloud_Release|Any CPU.Build.0 = Release|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Cloud_Release|x86.ActiveCfg = Release|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Cloud_Release|x86.Build.0 = Release|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Debug|x86.Build.0 = Debug|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Debug-Net45|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Debug-Net45|Any CPU.Build.0 = Debug|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Debug-Net45|x86.ActiveCfg = Debug|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Debug-Net45|x86.Build.0 = Debug|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Release|x86.ActiveCfg = Release|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Release|x86.Build.0 = Release|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Release-Net45|Any CPU.ActiveCfg = Release|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Release-Net45|Any CPU.Build.0 = Release|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Release-Net45|x86.ActiveCfg = Release|Any CPU
+		{8BE516C0-E46B-4C1B-84AD-D5F7AA9FE678}.Release-Net45|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

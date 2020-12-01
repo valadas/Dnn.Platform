@@ -1,6 +1,7 @@
 ﻿// This file loads or creates the local settings file you can use to influence the build process
 // and/or maintain a local DNN development site
 
+using System;
 using Cake.Frosting;
 
 public class LocalSettings {
@@ -18,5 +19,10 @@ public class LocalSettings {
 
 public sealed class CreateSettings : FrostingTask<Context>
 {
+    public override void Run(Context context)
+    {
+        Console.Write("What version would you like to set (default=auto): ");
+        var version = Console.ReadLine();
+    }
     // Doesn't need to do anything as it's done automatically
 }

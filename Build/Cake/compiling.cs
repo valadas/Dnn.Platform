@@ -20,6 +20,17 @@ public sealed class Build : FrostingTask<Context>
     }
 }
 
+public sealed class DebugBuild : FrostingTask<Context>
+{
+    public override void Run(Context context)
+    {
+        var buildSettings = new MSBuildSettings()
+        .SetConfiguration("Debug")
+        .SetPlatformTarget(PlatformTarget.MSIL);
+        context.MSBuild(context.dnnSolutionPath, buildSettings);
+    }
+}
+
 public sealed class RestoreNuGetPackages : FrostingTask<Context>
 {
     public override void Run(Context context)
