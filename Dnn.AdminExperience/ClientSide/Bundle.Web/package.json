@@ -36,7 +36,7 @@
     "less": "3.9.0",
     "less-loader": "5.0.0",
     "moment": "^2.22.1",
-    "pikaday": "1.8.0",
+    "pikaday": "1.8.2",
     "prop-types": "^15.6.2",
     "raw-loader": "2.0.0",
     "react": "^16.6.3",
