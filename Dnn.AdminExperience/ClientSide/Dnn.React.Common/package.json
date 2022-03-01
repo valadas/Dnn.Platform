@@ -56,7 +56,7 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
     "babel-polyfill": "6.26.0",
-    "cpy-cli": "^2.0.0",
+    "cpy-cli": "^4.0.0",
     "create-react-class": "^15.6.3",
     "css-loader": "2.1.1",
     "enzyme": "^3.5.0",
