@@ -33,6 +33,7 @@ namespace DotNetNuke.Security.Roles
             this.AddUserRole(portalId, userId, roleId, RoleStatus.Approved, false, Null.NullDate, expiryDate);
         }
 
+        [Obsolete("Deprecated in DotNetNuke 9.10.3. This function has been replaced by overload with extra parameters. Scheduled removal in v11.0.0.")]
         public void AddUserRole(int portalId, int userId, int roleId, DateTime effectiveDate, DateTime expiryDate)
         {
             this.AddUserRole(portalId, userId, roleId, RoleStatus.Approved, false, effectiveDate, expiryDate);
@@ -70,6 +71,7 @@ namespace DotNetNuke.Security.Roles
             return new ArrayList(Instance.GetRoles(Null.NullInteger, r => r.SecurityMode != SecurityMode.SocialGroup && r.Status == RoleStatus.Approved).ToArray());
         }
 
+        [Obsolete("Deprecated in DotNetNuke 9.10.3. This function has been replaced by overload with extra parameters. Scheduled removal in v11.0.0.")]
         public ArrayList GetRolesByGroup(int portalId, int roleGroupId)
         {
             return new ArrayList(Instance.GetRoles(portalId, r => r.RoleGroupID == roleGroupId && r.SecurityMode != SecurityMode.SocialGroup && r.Status == RoleStatus.Approved).ToArray());
