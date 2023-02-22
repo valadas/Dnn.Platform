@@ -1667,6 +1667,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.10.1, @babel/runtime@npm:^7.18.3":
+  version: 7.21.0
+  resolution: "@babel/runtime@npm:7.21.0"
+  dependencies:
+    regenerator-runtime: ^0.13.11
+  checksum: 7b33e25bfa9e0e1b9e8828bb61b2d32bdd46b41b07ba7cb43319ad08efc6fda8eb89445193e67d6541814627df0ca59122c0ea795e412b99c5183a0540d338ab
+  languageName: node
+  linkType: hard
+
 "@babel/runtime@npm:^7.12.1":
   version: 7.20.7
   resolution: "@babel/runtime@npm:7.20.7"
@@ -6655,7 +6664,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-runtime@npm:6.x, babel-runtime@npm:^6.18.0, babel-runtime@npm:^6.2.0, babel-runtime@npm:^6.22.0, babel-runtime@npm:^6.26.0":
+"babel-runtime@npm:^6.18.0, babel-runtime@npm:^6.2.0, babel-runtime@npm:^6.22.0, babel-runtime@npm:^6.26.0":
   version: 6.26.0
   resolution: "babel-runtime@npm:6.26.0"
   dependencies:
@@ -19527,13 +19536,30 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"rc-progress@npm:^2.0.6":
-  version: 2.3.0
-  resolution: "rc-progress@npm:2.3.0"
+"rc-progress@npm:^3.4.1":
+  version: 3.4.1
+  resolution: "rc-progress@npm:3.4.1"
   dependencies:
-    babel-runtime: 6.x
-    prop-types: ^15.5.8
-  checksum: cab1ea412d2889c2e21d1f94e405dc0e9ad82d517b469932c4876390e04882ac36cfd459c33bf2c4bfef78d326353f9cbd37a26d72117cea9ddeff0b867ae8c3
+    "@babel/runtime": ^7.10.1
+    classnames: ^2.2.6
+    rc-util: ^5.16.1
+  peerDependencies:
+    react: ">=16.9.0"
+    react-dom: ">=16.9.0"
+  checksum: d4dce5231ea29bfa866935a59f05473711f9dfc944f95cc78b0fdcd1508a063983cc58973f54c2b20797f0b0f480c4a2b84aaa2ca185158c14800ec659163880
+  languageName: node
+  linkType: hard
+
+"rc-util@npm:^5.16.1":
+  version: 5.28.0
+  resolution: "rc-util@npm:5.28.0"
+  dependencies:
+    "@babel/runtime": ^7.18.3
+    react-is: ^16.12.0
+  peerDependencies:
+    react: ">=16.9.0"
+    react-dom: ">=16.9.0"
+  checksum: e60424c37dad7575bb2429e266a81f96003701d719d1fb40128b42ed1c6972896cec09ece8857b36ce9ac74ba95aa2d0a9bdc0609894ba1b3c12c15504a1a886
   languageName: node
   linkType: hard
 
@@ -22105,7 +22131,7 @@ resolve@^1.20.0:
     localization: ^1.0.2
     prop-types: ^15.6.2
     raw-loader: ^2.0.0
-    rc-progress: ^2.0.6
+    rc-progress: ^3.4.1
     react: ^16.14.0
     react-click-outside: ^3.0.1
     react-dom: ^16.14.0
