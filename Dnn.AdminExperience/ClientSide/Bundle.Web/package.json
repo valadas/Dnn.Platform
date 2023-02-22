@@ -64,7 +64,7 @@
     "webpack": "4.31.0",
     "webpack-bundle-analyzer": "^4.4.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "3.1.14"
+    "webpack-dev-server": "4.11.1"
   },
   "dependencies": {
     "@dnnsoftware/dnn-react-common": "9.11.1"
