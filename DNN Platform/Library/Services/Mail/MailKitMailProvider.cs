@@ -12,7 +12,7 @@ namespace DotNetNuke.Services.Mail
     using DotNetNuke.Common.Utilities;
     using DotNetNuke.Entities.Host;
     using DotNetNuke.Entities.Portals;
-
+    using DotNetNuke.Services.Mail.OAuth;
     using MailKit.Net.Smtp;
     using MailKit.Security;
 
@@ -24,6 +24,9 @@ namespace DotNetNuke.Services.Mail
     public class MailKitMailProvider : MailProvider
     {
         private static readonly Regex SmtpServerRegex = new Regex("^[^:]+(:[0-9]{1,5})?$", RegexOptions.Compiled);
+
+        /// <inheritdoc />
+        public override bool SupportsOAuth => true;
 
         /// <inheritdoc />
         public override string SendMail(MailInfo mailInfo, SmtpInfo smtpInfo = null)
@@ -45,6 +48,12 @@ namespace DotNetNuke.Services.Mail
                     if (smtpInfo.Authentication == "1" && !string.IsNullOrEmpty(smtpInfo.Username) && !string.IsNullOrEmpty(smtpInfo.Password))
                     {
                         smtpClient.Authenticate(smtpInfo.Username, smtpInfo.Password);
+                    }
+
+                    var (provider, portalId) = GetOAuthProvider(smtpClient, smtpInfo);
+                    if (provider != null)
+                    {
+                        provider.Authorize(portalId, new OAuthSmtpClient(smtpClient));
                     }
 
                     smtpClient.Send(mailMessage);
@@ -81,6 +90,12 @@ namespace DotNetNuke.Services.Mail
                         await smtpClient.AuthenticateAsync(smtpInfo.Username, smtpInfo.Password, cancellationToken);
                     }
 
+                    var (provider, portalId) = GetOAuthProvider(smtpClient, smtpInfo);
+                    if (provider != null)
+                    {
+                        provider.AuthorizeAsync(portalId, new OAuthSmtpClient(smtpClient), cancellationToken);
+                    }
+
                     await smtpClient.SendAsync(mailMessage, cancellationToken);
                     await smtpClient.DisconnectAsync(true, cancellationToken);
                 }
@@ -110,6 +125,7 @@ namespace DotNetNuke.Services.Mail
                                Username = Host.SMTPUsername,
                                Password = Host.SMTPPassword,
                                EnableSSL = Host.EnableSMTPSSL,
+                               AuthProvider = Host.SMTPAuthProvider,
                            };
             }
 
@@ -282,6 +298,47 @@ namespace DotNetNuke.Services.Mail
                     return MessagePriority.Urgent;
                 default:
                     throw new ArgumentException($"Invalid MailPriority value: {priority}", nameof(priority));
+            }
+        }
+
+        private static (ISmtpOAuthProvider, int) GetOAuthProvider(SmtpClient smtpClient, SmtpInfo smtpInfo)
+        {
+            var usingOAuth = smtpInfo.Authentication == "3";
+            if (usingOAuth)
+            {
+                var authProvider = SmtpOAuthController.Instance.GetOAuthProvider(smtpInfo.AuthProvider);
+                if (authProvider != null)
+                {
+                    var portalId = Null.NullInteger;
+                    if (Host.SMTPPortalEnabled)
+                    {
+                        portalId = PortalSettings.Current.PortalId;
+                    }
+
+                    return (authProvider, portalId);
+                }
+            }
+
+            return (null, Null.NullInteger);
+        }
+
+        private class OAuthSmtpClient : IOAuth2SmtpClient
+        {
+            public OAuthSmtpClient(ISmtpClient smtpClient)
+            {
+                this.SmtpClient = smtpClient;
+            }
+
+            public ISmtpClient SmtpClient { get; }
+
+            public void Authenticate(string username, string token)
+            {
+                this.SmtpClient.Authenticate(new SaslMechanismOAuth2(username, token));
+            }
+
+            public Task AuthenticateAsync(string username, string token, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                return this.SmtpClient.AuthenticateAsync(new SaslMechanismOAuth2(username, token), cancellationToken);
             }
         }
     }
