@@ -5,6 +5,8 @@ namespace DotNetNuke.Security.Permissions
 {
     using System;
     using System.Data;
+    using System.Xml;
+    using System.Xml.Schema;
     using System.Xml.Serialization;
 
     using DotNetNuke.Abstractions.Security.Permissions;
@@ -12,21 +14,22 @@ namespace DotNetNuke.Security.Permissions
     using DotNetNuke.Entities;
     using Newtonsoft.Json;
 
-    /// Project  : DotNetNuke
-    /// Namespace: DotNetNuke.Security.Permissions
-    /// Class    : PermissionInfo
     /// <summary>PermissionInfo provides the Entity Layer for Permissions.</summary>
     [Serializable]
-    public class PermissionInfo : BaseEntityInfo, IPermissionDefinitionInfo
+    public class PermissionInfo : BaseEntityInfo, IPermissionDefinitionInfo, IXmlSerializable
     {
+        private int permissionId;
+        private int moduleDefId;
+
         /// <inheritdoc cref="IPermissionDefinitionInfo.ModuleDefId" />
         [XmlIgnore]
         [JsonIgnore]
         [Obsolete($"Deprecated in DotNetNuke 9.13.1. Use {nameof(IPermissionDefinitionInfo)}.{nameof(IPermissionDefinitionInfo.ModuleDefId)} instead. Scheduled for removal in v11.0.0.")]
+        [CLSCompliant(false)]
         public int ModuleDefID
         {
-            get => ((IPermissionDefinitionInfo)this).ModuleDefId;
-            set => ((IPermissionDefinitionInfo)this).ModuleDefId = value;
+            get => this.moduleDefId;
+            set => this.moduleDefId = value;
         }
 
         /// <inheritdoc />
@@ -36,10 +39,11 @@ namespace DotNetNuke.Security.Permissions
         /// <inheritdoc cref="IPermissionDefinitionInfo.PermissionID" />
         [XmlElement("permissionid")]
         [Obsolete($"Deprecated in DotNetNuke 9.13.1. Use {nameof(IPermissionDefinitionInfo)}.{nameof(IPermissionDefinitionInfo.PermissionId)} instead. Scheduled for removal in v11.0.0.")]
+        [CLSCompliant(false)]
         public int PermissionID
         {
-            get => ((IPermissionDefinitionInfo)this).PermissionId;
-            set => ((IPermissionDefinitionInfo)this).PermissionId = value;
+            get => this.permissionId;
+            set => this.permissionId = value;
         }
 
         /// <inheritdoc />
@@ -54,12 +58,64 @@ namespace DotNetNuke.Security.Permissions
         /// <inheritdoc />
         [XmlIgnore]
         [JsonIgnore]
-        int IPermissionDefinitionInfo.ModuleDefId { get; set; }
+        int IPermissionDefinitionInfo.ModuleDefId
+        {
+            get => this.moduleDefId;
+            set => this.moduleDefId = value;
+        }
 
         /// <inheritdoc />
         [XmlIgnore]
         [JsonIgnore]
-        int IPermissionDefinitionInfo.PermissionId { get; set; }
+        int IPermissionDefinitionInfo.PermissionId
+        {
+            get => this.permissionId;
+            set => this.permissionId = value;
+        }
+
+        /// <inheritdoc/>
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        /// <inheritdoc/>
+        public void ReadXml(XmlReader reader)
+        {
+            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "PermissionInfo")
+            {
+                while (reader.Read())
+                {
+                    if (reader.NodeType == XmlNodeType.Element)
+                    {
+                        string elementName = reader.LocalName;
+                        reader.Read();
+                        switch (elementName)
+                        {
+                            case "permissioncode":
+                                this.PermissionCode = reader.Value;
+                                break;
+                            case "permissionid":
+                                var permissionId = int.Parse(reader.Value);
+                                (this as IPermissionDefinitionInfo).PermissionId = permissionId;
+                                break;
+                            case "permissionkey":
+                                this.PermissionKey = reader.Value;
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <inheritdoc/>
+        public void WriteXml(XmlWriter writer)
+        {
+            var @this = (IPermissionDefinitionInfo)this;
+            writer.WriteElementString(nameof(@this.PermissionCode).ToLowerInvariant(), @this.PermissionCode);
+            writer.WriteElementString(nameof(@this.PermissionId).ToLowerInvariant(), @this.PermissionId.ToString());
+            writer.WriteElementString(nameof(@this.PermissionKey).ToLowerInvariant(), @this.PermissionKey);
+        }
 
         /// <summary>FillInternal fills a PermissionInfo from a Data Reader.</summary>
         /// <param name="dr">The Data Reader to use.</param>
