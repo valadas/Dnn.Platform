@@ -41,9 +41,9 @@ namespace DotNetNuke.Security.Permissions
         public ModulePermissionInfo(PermissionInfo permission)
             : this()
         {
-            this.ModuleDefID = permission.ModuleDefID;
+            this.ModuleDefId = permission.ModuleDefId;
             this.PermissionCode = permission.PermissionCode;
-            this.PermissionID = permission.PermissionID;
+            this.PermissionId = permission.PermissionId;
             this.PermissionKey = permission.PermissionKey;
             this.PermissionName = permission.PermissionName;
         }

@@ -11,20 +11,7 @@ namespace DotNetNuke.Security.Permissions
     using DotNetNuke.Common;
     using DotNetNuke.Common.Utilities;
 
-    /// Project  : DotNetNuke
-    /// Namespace: DotNetNuke.Security.Permissions
-    /// Class    : PermissionInfoBase
-    /// <summary>PermissionInfoBase provides a base class for PermissionInfo classes.</summary>
-    /// <remarks>All Permission classes have  a common set of properties
-    ///   - AllowAccess
-    ///   - RoleID
-    ///   - RoleName
-    ///   - UserID
-    ///   - Username
-    ///   - DisplayName
-    ///
-    /// and these are implemented in this base class.
-    /// </remarks>
+    /// <summary>PermissionInfoBase provides a base class for Permission classes.</summary>
     [Serializable]
     public abstract class PermissionInfoBase : PermissionInfo, IPermissionInfo
     {
@@ -77,19 +64,13 @@ namespace DotNetNuke.Security.Permissions
         }
 
         /// <inheritdoc cref="IPermissionInfo.RoleId" />
-        [XmlElement("roleid")]
-        [Obsolete($"Deprecated in DotNetNuke 9.13.1. Use {nameof(IPermissionInfo)}.{nameof(IPermissionInfo.RoleId)} instead. Scheduled for removal in v11.0.0.")]
+        [XmlIgnore]
+        [Obsolete($"Deprecated in DotNetNuke 9.13.1. Use {nameof(IPermissionInfo.RoleId)} instead. Scheduled for removal in v11.0.0.")]
+        [CLSCompliant(false)]
         public int RoleID
         {
-            get
-            {
-                return ((IPermissionInfo)this).RoleId;
-            }
-
-            set
-            {
-                ((IPermissionInfo)this).RoleId = value;
-            }
+            get => this.RoleId;
+            set => this.RoleId = value;
         }
 
         /// <inheritdoc />
@@ -108,8 +89,9 @@ namespace DotNetNuke.Security.Permissions
         }
 
         /// <inheritdoc cref="IPermissionInfo.UserId" />
-        [XmlElement("userid")]
-        [Obsolete($"Deprecated in DotNetNuke 9.13.1. Use {nameof(IPermissionInfo)}.{nameof(IPermissionInfo.UserId)} instead. Scheduled for removal in v11.0.0.")]
+        [XmlIgnore]
+        [Obsolete($"Deprecated in DotNetNuke 9.13.1. Use {nameof(IPermissionInfo.UserId)} instead. Scheduled for removal in v11.0.0.")]
+        [CLSCompliant(false)]
         public int UserID
         {
             get
@@ -139,18 +121,12 @@ namespace DotNetNuke.Security.Permissions
         }
 
         /// <inheritdoc />
-        int IPermissionInfo.RoleId
-        {
-            get => this.roleId;
-            set => this.roleId = value;
-        }
+        [XmlElement("roleid")]
+        public int RoleId { get; set; }
 
         /// <inheritdoc />
-        int IPermissionInfo.UserId
-        {
-            get => this.userId;
-            set => this.userId = value;
-        }
+        [XmlElement("userid")]
+        public int UserId { get; set; }
 
         /// <summary>FillInternal fills the PermissionInfoBase from a Data Reader.</summary>
         /// <param name="dr">The Data Reader to use.</param>

@@ -7,6 +7,7 @@ namespace DotNetNuke.Tests.Core.Security.Permissions
     using System;
     using System.IO;
     using System.Text;
+
     using DotNetNuke.Abstractions.Security.Permissions;
     using DotNetNuke.Common.Utilities;
     using DotNetNuke.Security.Permissions;
@@ -33,11 +34,12 @@ namespace DotNetNuke.Tests.Core.Security.Permissions
 
             // Assert
             Assert.NotNull(json);
-            Assert.False(json.Contains("ModuleDefID"));
-            Assert.True(json.Contains("PermissionCode"));
-            Assert.True(json.Contains("PermissionID"));
-            Assert.True(json.Contains("PermissionKey"));
-            Assert.False(json.Contains("PermissionName"));
+            Assert.False(json.Contains(nameof(permissionInfo.ModuleDefId)));
+            Assert.True(json.Contains(nameof(permissionInfo.PermissionCode)));
+            Assert.True(json.Contains(nameof(permissionInfo.PermissionID))); // old obsolete casing.
+            Assert.True(json.Contains(nameof(permissionInfo.PermissionId))); // new casing.
+            Assert.True(json.Contains(nameof(permissionInfo.PermissionKey)));
+            Assert.False(json.Contains(nameof(permissionInfo.PermissionName)));
         }
 
         [Test]
@@ -69,7 +71,6 @@ namespace DotNetNuke.Tests.Core.Security.Permissions
                 PermissionKey = "testKey",
                 PermissionName = "testName",
             };
-
             // Act
             var xml = XmlUtils.Serialize(permissionInfo);
 
