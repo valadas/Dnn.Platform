@@ -33,9 +33,15 @@ namespace DotNetNuke.Security.Permissions
         [XmlElement("permissioncode")]
         public string PermissionCode { get; set; }
 
-        /// <inheritdoc cref="IPermissionDefinitionInfo.PermissionID" />
+        /// <summary>
+        /// Gets or sets the permission identifier.
+        /// </summary>
+        /// <remarks>
+        /// <strong>DEPRECATED in DotNetNuke 9.13.1.</strong>
+        /// Use <see cref="IPermissionDefinitionInfo.PermissionId"/> instead. Scheduled for removal in v11.0.0.
+        /// We can't use the [Obsolete] attribute here because it would potentially break XML serialization for consumers.
+        /// </remarks>
         [XmlElement("permissionid")]
-        [Obsolete($"Deprecated in DotNetNuke 9.13.1. Use {nameof(IPermissionDefinitionInfo)}.{nameof(IPermissionDefinitionInfo.PermissionId)} instead. Scheduled for removal in v11.0.0.")]
         public int PermissionID
         {
             get => ((IPermissionDefinitionInfo)this).PermissionId;
