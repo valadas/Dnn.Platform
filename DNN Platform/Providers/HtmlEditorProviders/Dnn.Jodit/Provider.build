@@ -1,0 +1,35 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <RootDirectory>$(MSBuildProjectDirectory)\..\..\..\..</RootDirectory>
+  </PropertyGroup>
+  <Import Project="..\..\..\..\DNN_Platform.build" />
+  <PropertyGroup>
+    <Extension>zip</Extension>
+    <DNNFileName>Dnn.JoditEditorProvider</DNNFileName>
+    <PackageName>Dnn.JoditEditorProvider</PackageName>
+    <InstallPath>$(WebsiteInstallPath)\Provider</InstallPath>
+    <Providers></Providers>
+    <ProviderFolderName>$(WebsitePath)\Providers\HtmlEditorProviders\Dnn.Jodit</ProviderFolderName>
+  </PropertyGroup>
+  <Import Project="$(BuildScriptsPath)\Package.Targets" />
+  <Target Name="AfterBuild" DependsOnTargets="GetFiles;DebugProject;Package">
+  </Target>
+  <Target Name="GetFiles">
+    <ItemGroup>
+      <TextFiles Include="*.txt" Exclude="license.txt;releasenotes.txt;*.Cleanup.txt" />
+      <Views Include="**\*.ashx;**\*.aspx;**\*.ascx" />
+      <CssFiles Include="css\*.css" />
+      <ResourceFiles Include="App_LocalResources\*.resx" />
+      <Resources Include="@(ResourceFiles);@(TextFiles);@(Views);@(CssFiles);" />
+    </ItemGroup>
+  </Target>
+  <Target Name="DebugProject" Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Copy SourceFiles="$(MSBuildProjectDirectory)/bin/$(AssemblyName).dll" DestinationFolder="$(WebsitePath)/bin$(Providers)" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)/bin/$(AssemblyName).pdb" DestinationFolder="$(WebsitePath)/bin$(Providers)" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)/bin/$(AssemblyName).xml" DestinationFolder="$(WebsitePath)/bin$(Providers)" />
+    <Copy SourceFiles="@(TextFiles)" DestinationFolder="$(ProviderFolderName)\%(RecursiveDir)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(Views)" DestinationFolder="$(ProviderFolderName)\%(RecursiveDir)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(CssFiles)" DestinationFolder="$(ProviderFolderName)\css\%(RecursiveDir)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(ResourceFiles)" DestinationFolder="$(ProviderFolderName)\App_LocalResources\%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
+</Project>

@@ -1,0 +1,36 @@
+﻿<dotnetnuke type="Package" version="5.0">
+  <packages><package name="Dnn.JoditEditorProvider" type="Provider" version="10.01.00">
+            <friendlyName>Jodit HTML Editor Provider</friendlyName>
+            <description>Jodit HTML Provider for DNN</description>
+            <iconFile>~/Providers/HtmlEditorProviders/Dnn.Jodit/Editor.png</iconFile>
+            <azureCompatible>true</azureCompatible>
+            <owner>
+                <name>.NET Foundation and Contributors</name>
+                <organization>DNN Community</organization>
+                <url>https://dnncommunity.org</url>
+                <email>info@dnncommunity.org</email>
+            </owner>
+            <license src="license.txt" />
+            <releaseNotes src="releaseNotes.txt" />
+            <components>
+                <component type="Assembly">
+                    <assemblies>
+                        <assembly>
+                            <path>bin</path>
+                            <name>Dnn.JoditEditorProvider.dll</name>
+                        </assembly>
+                    </assemblies>
+                </component>
+                <component type="File">
+                    <files>
+                        <basePath>Providers\HtmlEditorProviders\Dnn.Jodit</basePath>
+                        <file>
+                            <name>Editor.png</name>
+                            <sourceFileName>Editor.png</sourceFileName>
+                        </file>
+                    </files>
+                </component>
+            </components>
+        </package>
+    </packages>
+</dotnetnuke>

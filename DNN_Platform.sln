@@ -158,6 +158,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build Scripts", "Build Scri
 		Build\BuildScripts\AEModule.build = Build\BuildScripts\AEModule.build
 		Build_Install_Package.bat = Build_Install_Package.bat
 		Build_Upgrade_Package.bat = Build_Upgrade_Package.bat
+		Build\BuildScripts\DNN_Package.build = Build\BuildScripts\DNN_Package.build
 		DNN_Platform.build = DNN_Platform.build
 		Build\BuildScripts\Module.build = Build\BuildScripts\Module.build
 		Build\BuildScripts\Provider.build = Build\BuildScripts\Provider.build
@@ -674,6 +675,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dnn.Skins.Aperture", "DNN Platform\Skins\Aperture\Dnn.Skins.Aperture.csproj", "{9F20422E-76EB-4B24-B721-B1CAF17407F4}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Dnn.ClientSide", "DNN Platform\Dnn.ClientSide\Dnn.ClientSide.esproj", "{549CCB04-6321-4E6B-88C1-06FAC574D061}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dnn.Jodit", "Dnn.Jodit", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dnn.JoditEditorProvider", "DNN Platform\Providers\HtmlEditorProviders\Dnn.Jodit\Dnn.JoditEditorProvider.csproj", "{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -2395,6 +2400,30 @@ Global
 		{549CCB04-6321-4E6B-88C1-06FAC574D061}.Release-Net45|x86.ActiveCfg = Release|Any CPU
 		{549CCB04-6321-4E6B-88C1-06FAC574D061}.Release-Net45|x86.Build.0 = Release|Any CPU
 		{549CCB04-6321-4E6B-88C1-06FAC574D061}.Release-Net45|x86.Deploy.0 = Release|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Cloud_Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Cloud_Debug|Any CPU.Build.0 = Release|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Cloud_Debug|x86.ActiveCfg = Release|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Cloud_Debug|x86.Build.0 = Release|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Cloud_Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Cloud_Release|Any CPU.Build.0 = Release|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Cloud_Release|x86.ActiveCfg = Release|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Cloud_Release|x86.Build.0 = Release|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Debug|x86.Build.0 = Debug|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Debug-Net45|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Debug-Net45|Any CPU.Build.0 = Debug|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Debug-Net45|x86.ActiveCfg = Debug|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Debug-Net45|x86.Build.0 = Debug|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Release|x86.ActiveCfg = Release|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Release|x86.Build.0 = Release|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Release-Net45|Any CPU.ActiveCfg = Release|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Release-Net45|Any CPU.Build.0 = Release|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Release-Net45|x86.ActiveCfg = Release|Any CPU
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850}.Release-Net45|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -2537,6 +2566,8 @@ Global
 		{4FBA4C58-559B-4CD2-9926-CDA3498FE20E} = {FBD3B3FB-C9A6-43D2-8FE7-6A0A19DF0D0C}
 		{9F20422E-76EB-4B24-B721-B1CAF17407F4} = {04F3856F-18A5-4916-A0EB-D3CFE0858443}
 		{549CCB04-6321-4E6B-88C1-06FAC574D061} = {29273BE6-1AA8-4970-98A0-41BFFEEDA67B}
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {682824D2-B21A-4460-AC66-67BFFDD5A559}
+		{1EA9C0A8-4917-4D4D-8275-D5BFA951F850} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {46B6A641-57EB-4B19-B199-23E6FC2AB40B}
