@@ -146,6 +146,11 @@ namespace DotNetNuke.Web.InternalServices
                 if (int.TryParse(fileId, out file))
                 {
                     var imageUrl = ShowImage(file);
+                    if (imageUrl == null)
+                    {
+                        return this.Request.CreateResponse(HttpStatusCode.Unauthorized);
+                    }
+
                     return this.Request.CreateResponse(HttpStatusCode.OK, imageUrl);
                 }
             }
@@ -534,6 +539,12 @@ namespace DotNetNuke.Web.InternalServices
 
             if (image != null && IsImageExtension(image.Extension))
             {
+                var folder = FolderManager.Instance.GetFolder(image.FolderId);
+                if (folder == null || !FolderPermissionController.CanViewFolder((FolderInfo)folder))
+                {
+                    return null;
+                }
+
                 var imageUrl = FileManager.Instance.GetUrl(image);
                 return imageUrl;
             }
