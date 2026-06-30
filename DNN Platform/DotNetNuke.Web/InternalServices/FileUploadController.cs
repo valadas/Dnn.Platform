@@ -148,7 +148,7 @@ namespace DotNetNuke.Web.InternalServices
                     var imageUrl = ShowImage(file);
                     if (imageUrl == null)
                     {
-                        return this.Request.CreateResponse(HttpStatusCode.Unauthorized);
+                        return this.Request.CreateResponse(HttpStatusCode.NotFound);
                     }
 
                     return this.Request.CreateResponse(HttpStatusCode.OK, imageUrl);
